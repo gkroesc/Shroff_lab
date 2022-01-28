@@ -33,7 +33,7 @@ Please note: if it’s the first time for the GPU device to run on the computer,
 ### How to open the program:
   1. Download the BypassReg.ijm file and directly open it within Fiji
   
-### Before running the program:
+### Setup:
   1. Adjust the Path in line 5 of the file, stop after SPIMB or SPIMA. Be sure to use double backslashes (\\) in between directories
   2. Adjust the first and second number in line 9 to be the first and last timepoint that you wish to register
   3. Open the max projection for that specific position and draw a 325x425 square that contains the embryo in it. Record the x and y dimensions of that box and update line 11 with these dimentsions.
