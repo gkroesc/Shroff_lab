@@ -18,18 +18,20 @@ How to use the program
   3. Select Region of Interest: 
   The program pop-up 2 image windows (maximum projections of images), draw rectangles to contain the samples. The images will be cropped automatically based on the rectangles. The cropping will also be implied to the bead images. During the cropping a subtraction of 100 will also be applied to the images. Users can adjust the contrast of each image if needed, but the size of the rectangles should be same. 
   4. Confirm and modify the parameters in the next pop-up panel:
-  5. If “Customized” is selected for initial matrix, then users would be guided to choose a matrix file.
-  6. Then the macro calls GPU-based applications. And once the running is completed, all messages will show up in the imageJ log window.
-  7. The final outputs are within the folder “Reg_Sample”
-  
-  
+  ![image](https://user-images.githubusercontent.com/84924498/151614690-21908ff0-d97d-4502-907e-53187f4143ad.png)
+
+  6. If “Customized” is selected for initial matrix, then users would be guided to choose a matrix file.
+  7. Then the macro calls GPU-based applications. And once the running is completed, all messages will show up in the imageJ log window.
+  8. The final outputs are within the folder “Reg_Sample”
+
+
 Please note: if it’s the first time for the GPU device to run on the computer, it may take some time (up to minutes) to initialize the device. But once the device is initialized, it won’t need initialization next time.
 
 
 # Bypass Registration
 
 How to open the program:
-  1. Download the BypassReg.ijm file and directly o0en it within Fiji
+  1. Download the BypassReg.ijm file and directly open it within Fiji
   
 Before running the program:
   1. Adjust the Path in line 5 of the file, stop after SPIMB or SPIMA. Be sure to use double backslashes (\\) in between directories
