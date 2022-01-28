@@ -5,7 +5,7 @@ each slice onto a flat image in z.
  
 Both are used by dragging and dropping the file into Fiji which opens the interacive macro editor
 
-## Max_proj_1
+## Max Projection 1
 Max_proj_1 should be used first, on a single position to compare images from the two different SPIMs. Run it to determine whether to use SPIMA or SPIMB for the 
 other positions from that run. 
 ### To use:
@@ -13,7 +13,7 @@ other positions from that run.
   2. Adjust the first and second numbers in line 9 to be the first and last timepoint that you want to create projections for
   3. Press run
   
-## Max_proj_2
+## Max Projection 2
 Max_proj_2 should be used on every other position not used in Max_proj_1. Runs on either SPIMA or SPIMB, whichever is determined to be better based on the previous 
 step. 
 ### To use:
