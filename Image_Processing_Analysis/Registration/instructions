@@ -7,6 +7,7 @@ How to open the program:
   2. Install the UI macro: ImageJ (or Fiji) Plugins--> Macros-->Install..., Choose the macro file “splitDualViewReg_UI.ijm” (within the “splitDualViewReg” folder). Then there will be a splitDualViewReg option listed on the Plugins--> Macros menu.
                              or 
       Directly open the “splitDualViewReg_UI.ijm” within imageJ (or Fiji) and run it;
+  3. Make sure that you also have downloaded the CudaApp folder and the path in line 16 correctly points  to the directory that contains the Cuda App
 
 How to use the program
   1. Run the program: ImageJ (or Fiji) Plugins--> Macros--> splitDualViewReg.
