@@ -36,6 +36,7 @@ Please note: if it’s the first time for the GPU device to run on the computer,
 ### Before running the program:
   1. Adjust the Path in line 5 of the file, stop after SPIMB or SPIMA. Be sure to use double backslashes (\\) in between directories
   2. Adjust the first and second number in line 9 to be the first and last timepoint that you wish to register
-  3. Open the max projection for that specific position and draw a 325x425 square that contains the embryo in it. Record the x and y dimensions of that box and update line 11 with these dimentsions
+  3. Open the max projection for that specific position and draw a 325x425 square that contains the embryo in it. Record the x and y dimensions of that box and update line 11 with these dimentsions.
+  4. Press run, output will be saved in a RegA folder with the prefix C1_reg
 
-Press run, output will be saved in a RegA folder with the prefix C1_reg
+The output of either of these should be images that are ready to be run through deep learning. Eiter 3D-RCAN for images on nuclei or Decon Densenet for anything other than nuclei data
