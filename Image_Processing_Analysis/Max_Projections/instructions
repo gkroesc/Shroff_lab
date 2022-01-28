@@ -1,0 +1,9 @@
+# How to use:
+
+These files are written in .ijm language which is compatable with the computer application Fiji (formerly called ImageJ). Each file will take a sequence of image stacks over time and for each timepoint, project the maximum intensityfor each image into a flat image in z.
+
+The MAX folder generated can then be loaded into Fiji to generate a virtual stack that allows for quick and easy visualization of the embryo over the entire imaging run. Can help to figure out things like when twithcing starts, when the embryo hatches, when/if there is a focal shift, etcs.  
+
+Max_proj_1 should be used on a single position to compare images from the two different SPIMs. Run it first to determine whether to use SPIMA or SPIMB for the other positions from that run.
+
+Max_proj_2 should be used on every other position not used in Max_proj_1. Runs on either SPIMA or SPIMB, whichever is determined to be better base on the previous step.
