@@ -1,6 +1,6 @@
 # Registration
 
-This is the last processing step before images are put through deep learning. It crops down each image and rescales in z so that it has the correct number of slices. Use the split dual-view application if the dual color image splitter was used on the diSPIM and two different colors of fluoresence were used. Use the bypass file if bypass mode was used on the diSPIM and only one color was used for fluoresence
+This is the last processing step before images are put through deep learning. It crops down each image and rescales in z so that it has the correct number of slices. Use the split dual-view application if the dual color image splitter was used on the diSPIM and two different colors of fluoresence were used. Use the bypass file if bypass mode was used on the diSPIM and only one color was used for fluorescence
 
 
 ## Split Dual-view Application
