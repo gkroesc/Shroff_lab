@@ -1,7 +1,7 @@
 # How to use:
 
-Either of these files generates a max projection of an image sequences over time. It takes the image stack for each timepoint, projects the maximum intensity for
-each onto a flat image in z.
+Either of these files generates a max projection of an image sequence over time. It takes the image stack for each timepoint, projects the maximum intensity for
+each slice onto a flat image in z.
  
 Both are used by dragging and dropping the file into Fiji which opens the interacive macro editor
 
