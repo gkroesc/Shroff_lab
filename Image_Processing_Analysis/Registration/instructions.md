@@ -31,7 +31,7 @@ Please note: if it’s the first time for the GPU device to run on the computer,
 ## Bypass Registration
 
 ### How to open the program:
-  1. Download the BypassReg.ijm file and directly open it within Fiji
+  1. Download the BypassReg.ijm file and directly open it within Fiji or drag and drop the file directly into Fiji
   
 ### Setup:
   1. Adjust the Path in line 5 of the file, stop after SPIMB or SPIMA. Be sure to use double backslashes (\\) in between directories
