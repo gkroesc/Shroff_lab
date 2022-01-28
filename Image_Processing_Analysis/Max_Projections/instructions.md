@@ -16,7 +16,7 @@ other positions from that run.
 ## Max_proj_2
 Max_proj_2 should be used on every other position not used in Max_proj_1. Runs on either SPIMA or SPIMB, whichever is determined to be better based on the previous 
 step. 
-### Tou use:
+### To use:
   1. Adjust the first and second number in line 4 to be the first and last positions that you want to generate max projections 
   for (do not include position previously run in Max_proj_1)
   2. Adjust the path in line 7 up until the directory that contains the different positions
