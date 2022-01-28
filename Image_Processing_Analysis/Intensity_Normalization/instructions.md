@@ -4,7 +4,7 @@ These codes can be run on image files AFTER they have gone through deep learning
 
 All are used by dragging and dropping the file into Fiji which opens the interacive macro editor
 
-## Lineage Normalization
+## Lineaging Normalization
 
 This is run on a lineaging dataset where both channels have gone through the 3D-RCAN two step deep learning network. One should be a pan-nuclear channel and the other should be  a different color expressed in the cells that you are interested in lineaging.
 
