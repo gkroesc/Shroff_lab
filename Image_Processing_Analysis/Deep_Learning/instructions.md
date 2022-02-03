@@ -1,5 +1,5 @@
-#Deep Learning Networks:
+# Deep Learning Networks:
 
-##3D RCAN
+## 3D RCAN
 
-##Densenet 
+## Densenet 
