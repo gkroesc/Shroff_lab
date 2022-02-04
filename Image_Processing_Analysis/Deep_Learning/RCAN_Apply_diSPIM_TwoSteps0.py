@@ -22,9 +22,9 @@ from scipy.ndimage import rotate
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-step1_model_dir = 'E:\\Nuclei Model\\Model_step1'
-step2_model_dir = 'E:\\Nuclei Model\\Model_step2'
-predition_dir = 'L:\\012422_Plx2\\Pos5\\SPIMB'
+step1_model_dir = 'C:\\Users\\kroeschellga\\Shroff_lab\\Image_Processing_Analysis\\Deep_Learning\\Model_step1'
+step2_model_dir = 'C:\\Users\\kroeschellga\\Shroff_lab\\Image_Processing_Analysis\\Deep_Learning\\Model_step2'
+predition_dir = 'C:\\Users\\kroeschellga\\Shroff_lab\\Image_Processing_Analysis\\Deep_Learning\\example_data_rcan'
 test_folder = 'RegA'
 output_folder1 = 'RCAN_2Step_DL_' + test_folder
 
