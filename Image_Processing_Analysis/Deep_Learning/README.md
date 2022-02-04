@@ -12,11 +12,17 @@ The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps
 
 **Base Version Script Adjustments**
 - Line 25
-  - '''step1_model_dir = '\path\to\Model_step1''''
+   '''
+   step1_model_dir = '\path\to\Model_step1'
+   '''
 - Line 26
-  - '''step2_model_dir = 'path\to\Model_step2''''
+   '''
+   step2_model_dir = 'path\to\Model_step2'
+   '''
 - Line 27 
-  - '''predition_dir = 'path\to\input\image\channels''''
+  '''
+  predition_dir = 'path\to\input\image\channels'
+  '''
 - Line 28
   - '''test_folder = 'channel'''' (RegA or RegB)
 - Line 53 only needs to be changed if you do not want to apply the model to all images in that folder
