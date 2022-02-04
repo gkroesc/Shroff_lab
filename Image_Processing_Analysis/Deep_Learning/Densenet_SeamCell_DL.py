@@ -22,7 +22,7 @@ import random
 
 ##data_dir= 'Z://Cell_Tracking_Project//BV514_NU_Casy1A//081219_BV514NU//BV514_NU_casy1a//BV514_NU_Casy1A//BV514_NU_Casy1A//Pos0//SPIMB//Reg_Sample//' ## training, validating or testing
 
-data_dir = 'L:\\012622_DCR6485\\Pos5\\SPIMB\\'
+data_dir = 'C:\\Users\\kroeschellga\\Shroff_lab\\Image_Processing_Analysis\\Deep_Learning\\example_data_densenet'
 
 test_folder = 'RegA'
 output_folder = 'DenseDecon_DL_' + test_folder
@@ -498,7 +498,7 @@ class DenseDeconNet:
     def predition(self):
         
      #   train_dir = 'H:\\DeepLearningCode\\model-20200626\\NUCLEI\\SINGLE\\'  ##for nuclei
-        train_dir = 'E:\\Nuclei Model\\SeamCellModel\\' # for seam cell
+        train_dir = 'C:\\Users\\kroeschellga\\Shroff_lab\\Image_Processing_Analysis\\Deep_Learning\\SeamCellModel' # for seam cell
         print('Loading Model')
         checkpoint_path=os.path.join(train_dir,'model.ckpt')
         all_parameters_saver = tf.train.Saver()
