@@ -41,43 +41,29 @@ The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps
   positions = []
   ```
   - Add the **number only** for all of the positions you want to apply the model to, separated by a comma
+  
 - Line 30
   ```
   regs = []
   ```
-  - Add the **letter only** for all of the channels (generally A and B) you want to apply the model to, separated by a comma  
-- Line 38
-   ```
-   step1_model_dir = '\path\to\Model_step1'
-   ```
-- Line 39
-   ```
-   step2_model_dir = 'path\to\Model_step2'
-   ```
-- Line 40
-  ```
-  predition_dir = 'path\to\input\channels\Pos{}'.format(position)
-  ```   
-- Line 71 only needs to be changed if you do not want to apply the model to all images in that folder
-  ```
-  for i in range(0, maxlen)
-  ```
-  - Adjust maxlen to the number of the final image you wish to apply to
+  - Add the **letter only** for all of the channels (generally A and B) you want to apply the model to, separated by a comma
+    
+- The rest of the adjustments that need to be made are the same as for the base version, the only difference is the line numbers 
 
 **Running the script**
-Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
+- Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
 
-```
-python RCAN_Apply_diSPIM_TwoSteps0.py
-```
+  ```
+  python RCAN_Apply_diSPIM_TwoSteps0.py
+  ```
 
-Once runnning you should get this output for each image should look like:
+- Once runnning you should get this output for each image should look like:
 
-```
-Loading raw image from path\to\input\images\file.tiff
-100%|##################################################################################| 24/24 [00:16<00:00,  1.47it/s]
-100%|##################################################################################| 24/24 [01:24<00:00,  3.52s/it]
-113.12280631065369
-```
+  ```
+  Loading raw image from path\to\input\images\file.tiff
+  100%|##################################################################################| 24/24 [00:16<00:00,  1.47it/s]
+  100%|##################################################################################| 24/24 [01:24<00:00,  3.52s/it]
+  113.12280631065369
+  ```
 
 ## Densenet 
