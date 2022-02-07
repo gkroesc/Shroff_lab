@@ -16,7 +16,7 @@ Divided into the following subsections:
 - Rotate and Slice 
 - Deep Learning 
 
-Each folder contains the scripts for performing the different analysis techniques. Instructions are be found in the README.md file within the folder.
+Each folder contains the scripts for performing the different analysis techniques. Instructions are located in the README.md file within the folder.
 
 
 ## Segmentation
