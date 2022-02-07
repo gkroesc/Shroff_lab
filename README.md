@@ -9,12 +9,15 @@ This repository contains the various codes used by the Shroff lab C. elegans unt
 
 
 ## Image Processing
-This section is divided into the following subsections:
+Divided into the following subsections:
 - Max Projections
 - Registraion
 - Intensity Normalization
 - Rotate and Slice 
 - Deep Learning 
+
+Each folder contains the scripts for performing the different analysis techniques. Instructions are be found in the README.md file within the folder.
+
 
 ## Segmentation
 
