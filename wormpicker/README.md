@@ -21,4 +21,4 @@ To use this package,
 
 Diagram of Class/Function Structure:
 
-![alt text](wormpicker/wormPickerV2.2 Diagram (1).jpg?raw=true)
+![alt text](https://github.com/gkroesc/Worm_untwisting_project/blob/41ecffbb52d7c9ba3608f217bbad3e650801be61/wormpicker/wormPickerV2.2%20Diagram%20(1).jpg?raw=true)
