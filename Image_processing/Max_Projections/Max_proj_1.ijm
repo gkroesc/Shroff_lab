@@ -1,12 +1,22 @@
 //Use this max projection macro first, on a single position to determine whether SPIMA or SPIMB is clearer
 
 //Add the path to the first position folder
-Path = "H:\\012622_DCR6485\\Pos0";
+Path = getDirectory("Select folder containing SPIMA and SPIMB");
 File.makeDirectory(Path + "\\MAX_SPIMB\\");
 File.makeDirectory(Path + "\\MAX_SPIMA\\");
 
+start = 0;
+end = 118;
+
 //Add the first and last time point as the two values here
-for(i = 0; i <= 118; i++)
+Dialog.create("Enter first and last timepoints");
+Dialog.addNumber("Start", start);
+Dialog.addNumber("End", end);
+Dialog.show();
+start = Dialog.getNumber();
+end = Dialog.getNumber();
+
+for(i = start; i <= end; i++)
 {
 open(Path + "\\SPIMB\\SPIMB-"+i+".tif");
 run("Z Project...", "projection=[Max Intensity]");
