@@ -17,3 +17,8 @@ To use this package,
 	a.	Navigate to the local directory and run ‘pythonw.exe .\notipick.py’
 
 4.	To close the app, open task manager, select python, and ‘end task’
+
+
+Diagram of Class/Function Structure:
+
+![alt text](wormpicker/wormPickerV2.2 Diagram (1).jpg?raw=true)
