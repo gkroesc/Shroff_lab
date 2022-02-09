@@ -2,47 +2,112 @@
 //Grant Kroeschell 01/13/2022
 
 //Enter the filepath where the RCAN_2Step_DL RegA and RegB folders are 
-Path ="Z:\\Cell_Tracking_Project\\RW10711\\Lineaging\\Pos0\\SPIMB\\Reg_Sample\\Test"
-File.makeDirectory(Path + "\\For_Lineaging\\")
-File.makeDirectory(Path + "\\For_Lineaging\\RegB\\")
-File.makeDirectory(Path + "\\For_Lineaging\\RegA\\")
+Path = getDirectory("Select folder containing deep learning output");
+File.makeDirectory(Path + "\\For_Lineaging\\");
+File.makeDirectory(Path + "\\For_Lineaging\\RegB\\");
+File.makeDirectory(Path + "\\For_Lineaging\\RegA\\");
 
 //Enter first and last timepoint here 
-for(i=0;i<=3;i++)
+start = 0;
+end = 418;
+pnc = "RegB"
+pnc_prefix = "DL_C2"
+tc = "RegA"
+tc_prefix = "DL_C1"
+
+
+//Add the first and last time point as the two values here
+Dialog.create("Enter first and last timepoints");
+Dialog.addNumber("Start", start);
+Dialog.addNumber("End", end);
+Dialog.addString("Pan-Nuclear channel", pnc);
+Dialog.addString("Pan-Nuclear channel image prefix", pnc_prefix);
+Dialog.addString("Tracking channel", tc);
+Dialog.addString("Tracking channel image prefix", tc_prefix);
+Dialog.show();
+start = Dialog.getNumber();
+end = Dialog.getNumber();
+pnc = Dialog.getString();
+pnc_prefix = Dialog.getString();
+tc = Dialog.getString();
+tc_prefix = Dialog.getString();
+
+
+
+
+
+og_image_a = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_0.tif";
+open(og_image_a);
+IDA = getImageID();
+run("Z Project...", "projection=[Max Intensity]");
+IDAP = getImageID();
+
+waitForUser("Background Selection","Select Region with no signal, then press OK");
+ROIA1 = newArray(4);
+selectImage(IDAP);
+getSelectionBounds(ROIA1[0], ROIA1[1], ROIA1[2], ROIA1[3]);
+close('*');
+
+
+
+og_image_b = Path + "\\RCAN_2Step_DL_" + tc + "\\" +tc_prefix+ "_reg_0.tif";
+open(og_image_b);
+IDB = getImageID();
+run("Z Project...", "projection=[Max Intensity]");
+IDBP = getImageID();
+
+
+waitForUser("Background Selection","Select Region with no signal, then press OK");
+ROIB1 = newArray(4);
+selectImage(IDBP);
+getSelectionBounds(ROIB1[0], ROIB1[1], ROIB1[2], ROIB1[3]);
+close("*");
+
+
+
+
+//Start the loop
+for(i = start; i <= end; i++)
 {
 
 //Add directory of pan nuclear channel here (most liekly green)
-open(Path + "\\RCAN_2Step_DL_RegA\\DL_C1_reg_"+i+".tif");
+image_pnc = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif";
+open(image_pnc);
 
 //Lower max intensity
 run("Divide...", "value=260 stack"); //might need to change value, Acetree prefers max ~250 
+ID1 = getImageID();
 
 //Normalize for background noise
 run("Z Project...", "projection=[Average Intensity]");
-makeRectangle(0, 0, 81, 91); //Make sure that there is no signal in the square in a max projection for this dataset, might need to adjust size or bounds
-a = getValue("Mean");
-selectWindow("DL_C1_reg_"+i+".tif");
+makeRectangle(ROIA1[0], ROIA1[1], ROIA1[2], ROIA1[3]);
+a = getValue("Mean");
+
+selectImage(ID1);
 run("Subtract...", "value=a stack");
 
 //Switch to RegB and rename all images with prefix Decon_reg
-saveAs("Tiff", Path + "\\For_Lineaging\\RegB\\Decon_reg_"+i+".tif");
+saveAs("Tiff", Path + "\\For_Lineaging\\"+pnc+"\\Decon_reg_"+i+".tif");
 close('*');
 
 //Add directory of channel that you want to lineage (Most likely red)
-open(Path +"\\\\RCAN_2Step_DL_RegB\\DL_C2_reg_"+i+".tif");
+image_tc =  Path +"\\RCAN_2Step_DL_" +tc+ "\\" +tc_prefix+ "_reg_"+i+".tif";
+open(image_tc);
+
 
 //Lower max intensity
 run("Divide...", "value=260 stack"); //Might need to change value, Acetree prefers max ~250
+ID2 = getImageID();
 
  //Normalize for background noise
 run("Z Project...", "projection=[Average Intensity]");
-makeRectangle(0, 0, 81, 91);
-//Make sure that there is no signal in the square in a max projection for this dataset, might need to adjust size or bounds
-a = getValue("Mean");
-selectWindow("DL_C2_reg_"+i+".tif");
-run("Subtract...", "value=a stack");
+makeRectangle(ROIB1[0], ROIB1[1], ROIB1[2], ROIB1[3]);
+b = getValue("Mean");
+
+selectImage(ID2);
+run("Subtract...", "value=b stack");
 
 //Switch to RegA and rename all images with prefix Decon_reg
-saveAs("Tiff", Path + "\\For_Lineaging\\RegA\\Decon_reg_"+i+".tif");
+saveAs("Tiff", Path + "\\For_Lineaging\\"+pnc+"\\Decon_reg_"+i+".tif");
 close('*');
 }
