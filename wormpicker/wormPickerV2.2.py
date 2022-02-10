@@ -24,7 +24,13 @@ from tkcalendar import DateEntry
 
 ### PAGE 1: Entry ###
 
-class page1(ttk.Frame):
+class Page1(ttk.Frame):
+	''' 
+	Class called by main controller window
+	Purpose: Allow user to input strains to database by
+	giving any number or combination of attributes as they 
+	relate to C. elegans experiments in Shroff Lab.
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 		self.parent = parent
@@ -51,19 +57,25 @@ class page1(ttk.Frame):
 
 
 		### Variables
-		self.strainvar = strainClass(self.addBox, self.controller) #self.controller is a downstream reference to ControllerWin
-		self.typevar = typeClass(self.addBox, self.controller) 
-		self.constructsvar = constructsClass(self.addBox, self.controller) 
-		self.statusvar = statusClass(self.addBox, self.controller) 
+		self.strainvar = StrainClass(self.addBox, self.controller) #self.controller is a downstream reference to ControllerWin
+		self.typevar = TypeClass(self.addBox, self.controller) 
+		self.constructsvar = ConstructsClass(self.addBox, self.controller) 
+		self.statusvar = StatusClass(self.addBox, self.controller) 
 		self.pickDatevar = PickDateClass(self.addBox, self.controller)
-		self.notesvar = notesClass(self.addBox, self.controller)
+		self.notesvar = NotesClass(self.addBox, self.controller)
 		self.pickEvery =  PickEveryClass(self.addBox, self.controller)
+		self.locationvar = LocationClass(self.addBox, self.controller)
 
 		### Getting
 		self.enterButton = tk.Button(self.addBox, text = 'Enter', width=25, command = (lambda:self.controller.enterData())) 
 
-		self.enterButton.grid(columnspan = 2, row=7, column=0, pady=5, padx=5) 
-class strainClass(ttk.Frame):#var=self.strain
+		self.enterButton.grid(columnspan = 2, row=8, column=0, pady=5, padx=5) 
+class StrainClass(ttk.Frame):#var=self.strain
+	'''
+	Class called by page 1
+	Purpose: create entrybox and label for 
+	strain name
+	'''
 	def __init__(self, addBox, controller):
 
 		ttk.Frame.__init__(self, addBox)
@@ -73,7 +85,12 @@ class strainClass(ttk.Frame):#var=self.strain
 		tk.Label(self.addBox, text='Strain Name').grid(row = 0, sticky='w', pady=5)
 		self.strain = tk.Entry(self.addBox)
 		self.strain.grid(row=0, column=1, sticky='w', padx=5)
-class typeClass(ttk.Frame):#var=self.strainTypeVar
+class TypeClass(ttk.Frame):#var=self.strainTypeVar
+	'''
+	Class called by page 1
+	Purpose: Create optionmenu for 'strain type' variables
+	and label for box
+	'''
 	def __init__(self, addBox, controller):
 
 		ttk.Frame.__init__(self, addBox)
@@ -104,7 +121,12 @@ class typeClass(ttk.Frame):#var=self.strainTypeVar
 		#self.strainTypeVar.set(self.strainTypesls[0]) # default value
 		#self.typeMenu = tk.OptionMenu(self.addBox, self.strainTypeVar, *self.strainTypesls)
 		#self.typeMenu.grid(row=1, column=1, sticky='w', padx=5)
-class constructsClass(ttk.Frame):#var=self.constructs
+class ConstructsClass(ttk.Frame):#var=self.constructs
+	'''
+	Class called by page 1
+	Purpose: Create entry box for constructs and labels
+	Dependent on user to know and input necessary constructs
+	'''
 	def __init__(self, addBox, controller):
 
 		ttk.Frame.__init__(self, addBox)
@@ -114,7 +136,12 @@ class constructsClass(ttk.Frame):#var=self.constructs
 		tk.Label(self.addBox, text= 'Construct').grid(row= 2, sticky= 'w', pady=5)
 		self.constructs = tk.Entry(self.addBox) 
 		self.constructs.grid(row=2, column=1, sticky='w', padx=5)
-class statusClass(ttk.Frame):#var=self.status
+class StatusClass(ttk.Frame):#var=self.status
+	'''
+	Class called by page 1
+	Purpose: create option menu for 
+	experimental statuses and respective labels
+	''' 
 	def __init__(self, addBox, controller): 
 		ttk.Frame.__init__(self, addBox)
 		self.controller = controller
@@ -150,8 +177,13 @@ class statusClass(ttk.Frame):#var=self.status
 		#self.status.set(self.statusls[0]) # default value
 		#self.statusMenu = tk.OptionMenu(self.addBox, self.status, *self.statusls)
 		#self.statusMenu.grid(row=3, column=1, sticky='w', padx=5)
-
 class PickDateClass(ttk.Frame):
+	'''
+	Class created by page 1
+	Purpose: Allows user to select the day last picked. 
+	Note: Date defaults to today first, then the last date selected 
+	for following entries.
+	'''
 	def __init__(self, addBox, controller):
 		ttk.Frame.__init__(self, addBox)
 		self.addBox = addBox
@@ -164,8 +196,12 @@ class PickDateClass(ttk.Frame):
 
 		self.date = DateEntry(self.addBox,selectmode='day', textvariable = self.lastPick, date_pattern = 'yyyy-MM-dd')
 		self.date.grid(row=4,column=1,pady=5, sticky = 'w')
-
 class PickEveryClass(ttk.Frame):
+	'''
+	Class created by page 1
+	Purpose: Allows user to specify how often a given strain must be maintained
+	Units: Days
+	'''
 	def __init__(self, addBox, controller):
 		self.addBox = addBox
 		self.controller = controller 
@@ -182,30 +218,53 @@ class PickEveryClass(ttk.Frame):
 
 		self.everyMenu = tk.OptionMenu(self.pickEveryMiniFrame, self.every, *self.everyOptions).grid(row=0, column=0,sticky='w')
 		tk.Label(self.pickEveryMiniFrame, text = 'day(s)').grid(row=0, column = 1, sticky='w')
-
-class notesClass(ttk.Frame): #var=self.notes
+class LocationClass(ttk.Frame):
 	def __init__(self, addBox, controller): #addBox == parent
 		ttk.Frame.__init__(self, addBox)
 		self.controller = controller
 		self.addBox = addBox
-		tk.Label(self.addBox, text = 'Notes').grid(row=6, sticky='w', pady=5)
+		tk.Label(self.addBox, text = 'Location').grid(row=6, sticky='w', pady=5)
+		self.location = tk.Entry(self.addBox)
+		self.location.grid(row=6, column=1, sticky='w', padx=5)
+class NotesClass(ttk.Frame): #var=self.notes
+	'''
+	Class created by page 1
+	Purpose: Allows user to list notes about the strain.
+	'''
+	def __init__(self, addBox, controller): #addBox == parent
+		ttk.Frame.__init__(self, addBox)
+		self.controller = controller
+		self.addBox = addBox
+		tk.Label(self.addBox, text = 'Notes').grid(row=7, sticky='w', pady=5)
 		self.notes = tk.Entry(self.addBox)
-		self.notes.grid(row=6, column=1, sticky='w', padx=5)
+		self.notes.grid(row=7, column=1, sticky='w', padx=5)
 ### PAGE 2: View Database ###
-class page2(ttk.Frame):
+class Page2(ttk.Frame):
+	'''
+	Window created by controller window and anchored in notebook frame
+	Purpose: Give user an interface to view and edit preveiously 
+	added strains in the database. 
+	Uses Pandas Table module, allowing for intuitive interaction with dataframe objects
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 
 		self.parent = parent 
 		self.controller = controller
-		self.page2Frame = tk.Frame(self.parent)
-		self.page2Frame.grid()
-		self.page2Frame.grid_columnconfigure(0, weight=1)
-		self.parent.add(self.page2Frame, text = 'View database strains') #Add tab to NB
+		self.Page2Frame = tk.Frame(self.parent)
+		self.Page2Frame.grid()
+		self.Page2Frame.grid_columnconfigure(0, weight=1)
+		self.parent.add(self.Page2Frame, text = 'View database strains') #Add tab to NB
 
-		self.dataWin = dataView(self.page2Frame, self.controller)
+		self.dataWin = DataView(self.Page2Frame, self.controller)
  
-class dataView(ttk.Frame):
+class DataView(ttk.Frame):
+	''' 
+	Class called by page 2 class that uses PandasTable
+	to map data to an interactive table visualization
+	uses getData class from main controller window.
+	Data is limited on what is passed through by getData.
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 		self.controller = controller
@@ -215,15 +274,10 @@ class dataView(ttk.Frame):
 		#self.viewWindow.grid_columnconfigure(0, weight=1)
 		self.viewWindow.pack(fill = 'both', expand=True)
 		self.df = self.controller.getData() 
-		#print('dataview:', id(self.df), type(self.df))
+		#print('DataView:', id(self.df), type(self.df))
 
 		self.table = self.pt = Table(self.viewWindow, dataframe = self.df)
 		self.pt.show()
-
-	#def addRowtoTable(self, row):
-	#	self.pt.model.df = self.pt.model.df.append(row, ignore_index = True)
-	#	print('addRow:', id(self.pt.model.df), type(self.pt.model.df))
-	#	self.pt.redraw()
 
 
 	def refresh(self): #To fully refresh, the csv would need to be saved, closed, then opened again and
@@ -231,16 +285,14 @@ class dataView(ttk.Frame):
 						# Then redrawn again. Shouldn't really be necessary unless multiple users at same time. 
 		self.pt.redraw()
 
-	#def savetocsv(self):
-	#	self.pt.model.df.to_csv('WormStrainsData.csv', index = False)
-	#	self.df = self.controller.getData()
-	#	self.table = self.pt = Table(self.viewWindow, dataframe = self.df)
-	#	print('savetocsv:', id(self.df), type(self.df))
-	#	self.pt.redraw()
-	
 ### PAGE 3: To-Do ###
 
-class page3(ttk.Frame):
+class Page3(ttk.Frame):
+	'''
+	Page called by main controller window. Anchored in the notebook frame.
+	Purpose: Display strains that are in need of attention based on 
+	days since last picked and maintenance frequency
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 		self.parent = parent 
@@ -258,7 +310,7 @@ class page3(ttk.Frame):
 		self.pickBox.grid_rowconfigure(0, weight=1)
 		self.pickBox.grid_columnconfigure(0, weight=1)
 
-		self.childPickFrame = strainsToPick(self.pickBox, self.controller)
+		self.childPickFrame = StrainsToPick(self.pickBox, self.controller)
 
 	def writeTaskEventLog(self, msg):
 		
@@ -272,7 +324,14 @@ class page3(ttk.Frame):
 		self.childPickFrame.eventLog['state'] = 'disabled'
 
 
-class strainsToPick(ttk.Frame):
+class StrainsToPick(ttk.Frame):
+	'''
+	Inner frame structure for to-do list
+	Called by page 3 class
+	Purpose: Creates nested frame structure that serves as the backbone of 
+	the to-do list page.
+	Contains template for pick box, descriptions, and interactor buttons. 
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 		self.parent = parent
@@ -317,6 +376,7 @@ class strainsToPick(ttk.Frame):
 		self.stmsg = tk.StringVar() #strain type
 		self.comsg = tk.StringVar() #constructs
 		self.exmsg = tk.StringVar() #experimental status
+		self.lomsg = tk.StringVar() #location
 		self.nomsg = tk.StringVar() #notes
 
 		self.dstitle = tk.Label(self.descbox, text = 'Days Since Last Pick:')
@@ -324,6 +384,7 @@ class strainsToPick(ttk.Frame):
 		self.sttitle = tk.Label(self.descbox, text = 'Strain Type:')
 		self.cotitle = tk.Label(self.descbox, text = 'Constructs:')
 		self.extitle = tk.Label(self.descbox, text = 'Experimental Status:')
+		self.lotitle = tk.Label(self.descbox, text = 'Location')
 		self.notitle = tk.Label(self.descbox, text = 'Notes:')
 
 		self.dsdesc = tk.Label(self.descbox, textvariable = self.dsmsg)
@@ -331,12 +392,13 @@ class strainsToPick(ttk.Frame):
 		self.stdesc = tk.Label(self.descbox, textvariable = self.stmsg)
 		self.codesc = tk.Label(self.descbox, textvariable = self.comsg)
 		self.exdesc = tk.Label(self.descbox, textvariable = self.exmsg)
+		self.lodesc = tk.Label(self.descbox, textvariable = self.lomsg)
 		self.nodesc = tk.Label(self.descbox, textvariable = self.nomsg)
 
 		self.titles = [self.dstitle, self.dptitle, self.sttitle, self.cotitle,
-						self.extitle, self.notitle]
+						self.extitle, self.lotitle, self.notitle]
 		self.descs = [self.dsdesc, self.dpdesc, self.stdesc, self.codesc,
-						self.exdesc, self.nodesc]
+						self.exdesc, self.lodesc, self.nodesc]
 
 		for i in range(len(self.titles)):
 			self.titles[i].grid(row = i, column = 0, sticky = 'e')
@@ -348,6 +410,7 @@ class strainsToPick(ttk.Frame):
 		self.stmsg.set('')
 		self.comsg.set('')
 		self.exmsg.set('')
+		self.lomsg.set('')
 		self.nomsg.set('')
 
 		self.snoozeorpick = SnoozePickButtons(self.descbox, self.controller)
@@ -364,6 +427,7 @@ class strainsToPick(ttk.Frame):
 			self.stmsg.set(self.refineddf['Strain Type'].values[self.idx])
 			self.comsg.set(self.refineddf['Constructs'].values[self.idx])
 			self.exmsg.set(self.refineddf['Experimental Status'].values[self.idx])
+			self.lomsg.set(self.refineddf['Location'].values[self.idx])
 			self.nomsg.set(self.refineddf['Notes'].values[self.idx])
 
 		self.controller.toDoPage.childPickFrame.snoozeorpick.snoozeVar.set('Snooze')
@@ -431,12 +495,17 @@ class strainsToPick(ttk.Frame):
 		remindDate = str(remindDate)
 		daysUntil = self.getDatetime(remindDate) - todayDate
 
-		if daysUntil.days <= 0: #If daysuntil has passed or is 0
+		if daysUntil.days < 0: #If daysuntil has passed or is 0
+			print(daysUntil.days)
 			return True
 		else:
 			return False
 
 class SnoozePickButtons(ttk.Frame):
+	'''
+	Class called by StrainsToPick class in page 3.
+	Contains buttons to control interactors with the to-do list
+	'''
 	def __init__(self, parent, controller):
 		ttk.Frame.__init__(self, parent)
 		self.parent = parent
@@ -539,6 +608,10 @@ class SnoozePickButtons(ttk.Frame):
 ###### MENU BAR ########
 
 class MenuBar():
+	'''
+	Menu bar appears at the top of window.
+	Options given are: ABOUT, SAVE, REFRESH, EXIT
+	'''
 	def __init__(self, parent, controller):
 
 		self.parent = parent 
@@ -569,8 +642,15 @@ class MenuBar():
 		
 ###### CONTROLLER ######
 
-class ControllerWin(ttk.Frame): #In most cases, parent != controller. Controller references the controller win, 
-							   #while parent references the most recent parent frame that the child is in
+class ControllerWin(ttk.Frame): 
+	'''
+	Main controller window called by main(). 
+	Also contains multiple functions that affect other classes.
+	Creates the notebook frame which the app is anchored in,
+	grids three subclasses (arbitrarily named page 1-3).
+	Pages are referenced in order of appearance. 
+	Menubar created last, which gives options to save, refresh, or exit
+	'''
 	def __init__(self, parent):
 
 		ttk.Frame.__init__(self, parent)
@@ -587,9 +667,9 @@ class ControllerWin(ttk.Frame): #In most cases, parent != controller. Controller
 		self.notebook.grid_columnconfigure(0, weight=1)
 		self.notebook.grid_rowconfigure(0, weight = 1)
 
-		self.viewPage = page2(self.notebook, self)
-		self.entryPage = page1(self.notebook, self) #Self is the first reference of the omnipotent controller(win)
-		self.toDoPage = page3(self.notebook, self)
+		self.viewPage = Page2(self.notebook, self)
+		self.entryPage = Page1(self.notebook, self) #Self is the first reference of the omnipotent controller(win)
+		self.toDoPage = Page3(self.notebook, self)
 
 		menubar = MenuBar(self.parent, self)
 
@@ -616,9 +696,10 @@ class ControllerWin(ttk.Frame): #In most cases, parent != controller. Controller
 			return
 
 		else:
-			self.pickDateEntry = self.entryPage.pickDatevar.lastPick.get()
+			self.pickDateEntry = 	self.entryPage.pickDatevar.lastPick.get()
 			self.constructEntry = 	self.entryPage.constructsvar.constructs.get()
-			self.pickEveryEntry = self.entryPage.pickEvery.every.get()
+			self.pickEveryEntry = 	self.entryPage.pickEvery.every.get()
+			self.locationEntry = 	self.entryPage.locationvar.location.get()
 			self.notesEntry = 		self.entryPage.notesvar.notes.get()
 
 			typeDict = self.entryPage.typevar.strainTypesDict
@@ -677,6 +758,7 @@ class ControllerWin(ttk.Frame): #In most cases, parent != controller. Controller
 						'Constructs': self.constructEntry,
 						'Experimental Status': statusEntry,
 						'Maintenance Frequency':self.pickEveryEntry,
+						'Location':self.locationEntry,
 						'Notes': self.notesEntry,
 						'Remind Date': self.remindDateEntry
 					}
@@ -720,8 +802,8 @@ def initDB():
 	
 	if path.exists('WormStrainsData.csv') == False:
 		msg = 'Creating database'
-		fields = ['Name', 'Date Picked', 'Date Added', 'Strain Type', 'Constructs', 'Experimental Status', 'Maintenance Frequency', 'Notes', 'Remind Date']
-		blankrow = ['Example Strain', '2022-01-01', '2022-01-01', 'Array', 'olaEX3847', 'Crossing', '3', 'Delete this row', '2022-01-04']
+		fields = ['Name', 'Date Picked', 'Date Added', 'Strain Type', 'Constructs', 'Experimental Status', 'Maintenance Frequency', 'Location', 'Notes', 'Remind Date']
+		blankrow = ['Example Strain', '2022-01-01', '2022-01-01', 'Array', 'olaEX3847', 'Crossing', '3', 'Incubator 1, shelf 2', 'Delete this row', '2022-01-04']
 
 		with open('WormStrainsData.csv', 'w') as csvfile:
 			csvwriter = csv.writer(csvfile)
