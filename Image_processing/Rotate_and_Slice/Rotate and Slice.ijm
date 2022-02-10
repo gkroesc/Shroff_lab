@@ -1,4 +1,4 @@
-Path = "\\\\nibibaimdata-01\\shroff_lab\\Cell_Tracking_Project\\101521_NG8413_lineaging\\Reg_Sample\\For_Lineaging"
+Path = getDirectory("Select folder containing normalized deep learning output");
 File.makeDirectory(Path + "\\Rotated\\")
 File.makeDirectory(Path + "\\Rotated\\RegB\\")
 File.makeDirectory(Path + "\\Rotated\\RegA\\")
@@ -10,14 +10,32 @@ File.makeDirectory(Path + "\\StarryNite\\tifr\\")
 start = 0 //First timepoint that you want to rotate (generally 0)
 startslice = 176 //Z slice where signal first appears AFTER rotating
 redstart = 200 //Timepoint you want the red channel to be added to dataset	 
-twitch = 369 //Timepoint twitching begins at
-stop = twitch + 1
+twitch = 369 //Timepoint twitching begins at
 savefinal = 1
 
 
 x1=70.0; y1=20.0; z1=-70.0; //Degrees in x, y, and z that embryo needs to be rotated in order to be in canonical orientation
 
 rotation="z-angle="+z1+" y-angle="+y1+" x-angle="+x1+" interpolation=[Cubic B-Spline] background=0.0 adjust resample";
+
+Dialog.create("Imaging Run Details");
+Dialog.addNumber("Start", start);
+Dialog.addNumber("Z slice where signal first appears after rotating", startslice);
+Dialog.addNumber("Timepoint when red signal first appears", redstart);
+Dialog.addNumber("Timepoint when twitching starts", twitch);
+Dialog.addNumber("X rotation angle ", x1);
+Dialog.addNumber("Y rotation angle", y1);
+Dialog.addNumber("Z rotation angle", z1);
+Dialog.show();
+start = Dialog.getNumber();
+startslice = Dialog.getNumber();
+redstart = Dialog.getNumber();
+twitch = Dialog.getNumber();
+x1 = Dialog.getNumber();
+y1 = Dialog.getNumber();
+z1 = Dialog.getNumber();
+
+stop = twitch + 1
 
 file=File.open(Path + "\\StarryNite\\matricies.txt");
 	

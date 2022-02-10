@@ -17,7 +17,7 @@ tc_prefix = "DL_C1"
 
 
 //Add the first and last time point as the two values here
-Dialog.create("Enter first and last timepoints");
+Dialog.create("Enter imagin Run Info");
 Dialog.addNumber("Start", start);
 Dialog.addNumber("End", end);
 Dialog.addString("Pan-Nuclear channel", pnc);

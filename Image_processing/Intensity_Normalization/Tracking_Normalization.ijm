@@ -16,7 +16,7 @@ tc_prefix = "DL_C2"
 
 
 //Add the first and last time point as the two values here
-Dialog.create("Enter Image Info");
+Dialog.create("Enter Imaging Run Info");
 Dialog.addNumber("Start timepoint", start);
 Dialog.addNumber("End timepoint", end);
 Dialog.addString("Untwisting channel", uc);

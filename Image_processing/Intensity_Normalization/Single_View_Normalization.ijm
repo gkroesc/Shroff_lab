@@ -9,7 +9,7 @@ in_channel = "RCAN_2Step_DL_RegA"
 prefix = "DL_C1"
 
 
-Dialog.create("Enter Image Info");
+Dialog.create("Enter Imaging Run Info");
 Dialog.addNumber("Start timepoint", start);
 Dialog.addNumber("End timepoint", end);
 Dialog.addString("Input Channel", in_channel);
