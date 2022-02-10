@@ -1,43 +1,24 @@
 # Registration
 
-This is the last processing step before images are put through deep learning. It crops down each image and rescales in z so that it has the correct number of slices.  
-
+This is the last processing step before images are put through deep learning. It crops down each image and rescales in z so that it has the correct number of slices. All are used by dragging and dropping the file into Fiji which opens the interacive macro editor. Once open press run and a dialog box should pop up where you can specify input filepaths and details of the imaging run.
 
 ## Split Dual-view Application
 Use this version if the dual color image splitter was used on the diSPIM and two different colors of fluoresence were imaged.
 
-### How to open the program:
-  1. Copy the folder “splitDualViewReg” to Fiji’s main folder.
-  2. Install the UI macro: Fiji Plugins--> Macros-->Install..., Choose the macro file “splitDualViewReg_UI.ijm” (within the “splitDualViewReg” folder). Then there will be a splitDualViewReg option listed on the Plugins--> Macros menu.
-                             or 
-      Directly open the “splitDualViewReg_UI.ijm” within Fiji and run it;
-  3. Make sure that you also have downloaded the CudaApp folder and the path in line 16 correctly points to the directory that contains the CudaApp
-    
+You will be prompted with two max projections, one from each channel, and a pop up instructing you to press OK when the correct region of interest is selected. Use the rectangle tool to draw a 325x425 box around the embryo, making sure to keep all signal within the edges of the box. Once this is done for one of the channels press Ctrl + Shift + E on the keyboard to copy that same sized box onto the other max projection. Once the second box is adjusted to fit the entire embryo, press OK to start running.
 
-### How to use
-  1. Run the program: Fiji Plugins--> Macros--> splitDualViewReg.
-  2. Following the pop-up dialogs, sequentially select folders: 
-  For single color: Input folder→Beads Image →Output folder; 
-  3. Select Region of Interest: 
-  The program pop-up 2 image windows (maximum projections of images), draw rectangles to contain the samples. The images will be cropped automatically based on the rectangles.   The cropping will also be implied to the bead images. During the cropping a subtraction of 100 will also be applied to the images. Users can adjust the contrast of each image if needed, but the size of the rectangles should be same. 
-  4. Confirm and modify the parameters in the next pop-up panel:
-  ![image](https://user-images.githubusercontent.com/84924498/151614690-21908ff0-d97d-4502-907e-53187f4143ad.png)
+The final outputs are in a RegA and RegB folder within a Reg_sample folder, image files will either have the prefix C1 or C2.
 
-  6. If “Customized” is selected for initial matrix, then users would be guided to choose a matrix file.
-  7. Then the macro calls GPU-based applications. And once the running is completed, all messages will show up in the imageJ log window.
-  
-The final outputs are within the folder “Reg_Sample”
-
-Please note: if it’s the first time for the GPU device to run on the computer, it may take some time (up to minutes) to initialize the device. But once the device is initialized, it won’t need initialization next time.
-
+More detailed instructions can be found in the SimpleManul.pdf file.
 
 ## Bypass Registration
 Use this version if bypass mode was used on the diSPIM and only one color was used for fluorescence.
 
-### How to use
-
- Download the BypassReg.ijm file and directly open it within Fiji or drag and drop the file directly into Fiji
+You will be prompted with a single max projection and a pop up instructing you to press OK when the correct region of interest is selected. Use the rectangle tool to draw a 325x425 box around the embryo, making sure to keep all signal within the edges of the box. Once positioned correctly press OK to start running.
   
-The output will be saved in a RegA folder with the prefix C1_reg
+The output will be saved in a RegA folder, image files have the prefix C1
 
-The output of either of these should be images that are ready to be run through deep learning. Eiter 3D-RCAN for images on nuclei or Decon Densenet for anything other than nuclei data
+
+
+
+The output of either of these should be images that are ready to be run through deep learning. Eiter 3D-RCAN for images on nuclei or Decon Densenet for anything other than nuclei data.
