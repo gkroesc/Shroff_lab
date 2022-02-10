@@ -1,8 +1,8 @@
 # Intensity Normalization
 
-These codes can be run on image files AFTER they have gone through deep learning. It zeros the background intensity and reduces signal to levels that allows for the best visualization in AceTree/MIPAV. It also renames the image files and switches the RegA/RegB folders.......
+These codes can be run on image files AFTER they have gone through deep learning. It zeros the background intensity and reduces signal to levels that allows for the best visualization in AceTree/MIPAV. It also renames the image files and switches the RegA/RegB folders so that they are correctly labeled for te next processing step.
 
-All are used by dragging and dropping the file into Fiji which opens the interacive macro editor. Once open press run and a dialog box should pop up where you can specify details of the imaging run
+All are used by dragging and dropping the file into Fiji which opens the interacive macro editor.Once open press run and a dialog box should pop up where you can specify input filepaths and details of the imaging run.
 
 ## Lineaging Normalization
 
@@ -19,6 +19,8 @@ The output is located in the For_Tracking folder. These images are ready to be l
 ## Single View Normalization
 
 This is run on any dataset where bypass mode was used and there is only one channel to normalize. 
+
+
 
 
 The output is located in the For_Tracking/RegB folder. These images are ready to be loaded into MIPAV for 3D viewing
