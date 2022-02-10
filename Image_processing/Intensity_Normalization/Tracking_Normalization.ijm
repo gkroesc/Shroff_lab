@@ -16,9 +16,9 @@ tc_prefix = "DL_C2"
 
 
 //Add the first and last time point as the two values here
-Dialog.create("Enter first and last timepoints");
-Dialog.addNumber("Start", start);
-Dialog.addNumber("End", end);
+Dialog.create("Enter Image Info");
+Dialog.addNumber("Start timepoint", start);
+Dialog.addNumber("End timepoint", end);
 Dialog.addString("Untwisting channel", uc);
 Dialog.addString("Untwisting channel image prefix", uc_prefix);
 Dialog.addString("Tracking channel", tc);
