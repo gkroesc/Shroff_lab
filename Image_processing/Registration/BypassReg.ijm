@@ -29,7 +29,7 @@ for (v = start_pos; v <= end_pos; v++)
 //Add the path to the image files up to Pos#, adjust SPIMA/B to whichever is better base off of Max_proj_1
 current_path = Path + "\\Pos"+v+"\\SPIM" + spim ;
 
-fileSPIM = current_path + "\\SPIM" + spim + "-0.tif";
+fileSPIM = current_path + "\\SPIM" + spim + "_0.tif";
 open(fileSPIM);
 IDA = getImageID();
 run("Z Project...", "projection=[Max Intensity]");
@@ -56,7 +56,7 @@ run("Crop");
 
 //Adjust scaling in z so each image has 308 slices
 run("Scale...", "x=1.0 y=1.0 z=6.16 width=325 height=425 depth=308 interpolation=Bilinear average process create");
-saveAs("Tiff", current_path + "\\RegA\\C1_reg-"+i+".tif");
+saveAs("Tiff", current_path + "\\RegA\\C1_reg_"+i+".tif");
 close('*');
 }
 }
