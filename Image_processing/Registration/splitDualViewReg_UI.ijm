@@ -13,7 +13,7 @@ while (nImages>0) {
 
 //*** Default setup****
 // Default folders/files for CUDA app
-appPath = "C://Users//kroeschellga//Desktop//splitDualViewReg//CudaApp//";
+appPath = "C://Users//kroeschellga//Desktop//Worm_untwisting_project//Image_processing//Registration//CudaApp//";
 
 
 bgValue = 100;  //background value for bio-sample images

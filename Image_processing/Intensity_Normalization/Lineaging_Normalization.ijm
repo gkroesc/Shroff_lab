@@ -71,13 +71,11 @@ for(i = start; i <= end; i++)
 {
 
 //Add directory of pan nuclear channel here (most liekly green)
-image_pnc = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif"
-;
+image_pnc = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif";
 open(image_pnc);
 
 //Lower max intensity
-run("Divide...", "value=260 stack");
- //might need to change value, Acetree prefers max ~250 
+run("Divide...", "value=260 stack"); //might need to change value, Acetree prefers max ~250 
 ID1 = getImageID();
 
 //Normalize for background noise
