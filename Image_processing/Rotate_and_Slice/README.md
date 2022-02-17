@@ -6,7 +6,7 @@ Use this file to prepare a lineaging dataset for AceTree. It rotates all of the 
 
 **Image Rotation**
 
-This program requires you to enter the degrees that the image must be rotated to get the embryo into canonical oreintation
+This program requires you to enter the degrees that the image must be rotated to get the embryo into canonical orientation
 
 This is easiest to determine using the [TransformJ](https://imagescience.org/meijering/software/transformj/) plugin for imageJ and following these steps:
 1. Starting with z,  determine the rotation angle in degrees for the image to be in the correct oreintation on the z axis 
