@@ -21,7 +21,10 @@ spim = Dialog.getString();
 start_tp = Dialog.getNumber();
 end_tp = Dialog.getNumber();
 
+
+
 //Add first and last position number to the two values for v
+setBatchMode(true);
 for (v = start_pos; v <= end_pos; v++)
 {
 //Add the path to the image files up to Pos#, adjust SPIMA/B to whichever is better base off of Max_proj_1
@@ -29,6 +32,7 @@ current_path = Path + "\\Pos"+v+"";
 File.makeDirectory(current_path + "\\MAX_SPIM" + spim + "_"+v+"\\");
 
 //Add first and last time point here, adjust SPIMA/B as needed below
+setBatchMode(true);
 for (i = start_tp; i <= end_tp; i++)
 {
 open(current_path + "\\SPIM" + spim + "\\SPIM" + spim + "-"+i+".tif");

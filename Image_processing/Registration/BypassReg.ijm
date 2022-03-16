@@ -49,6 +49,7 @@ close();
 File.makeDirectory(current_path + "\\RegA\\");
 
 //Add The first and last time point to the loop here 
+setBatchMode(true);
 for (i = start_tp; i <= end_tp; i++) {
 open(current_path + "\\SPIM" + spim + "-"+i+".tif");
 makeRectangle(ROIA1[0], ROIA1[1], ROIA1[2], ROIA1[3]); //Might need to adjust locaton of this rectangle, use max projection for reference

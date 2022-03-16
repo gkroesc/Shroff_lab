@@ -63,6 +63,7 @@ close("*");
 
 
 //Start the loop 
+setBatchMode(true);
 for(i=start;i<=end;i++)
 {
 

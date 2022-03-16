@@ -34,6 +34,7 @@ close('*');
 
 
 //Enter first and last timepoint here 
+setBatchMode(true);
 for(i=start;i<=end;i++)
 {
 

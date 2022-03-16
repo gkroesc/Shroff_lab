@@ -67,6 +67,7 @@ close("*");
 
 
 //Start the loop
+setBatchMode(true);
 for(i = start; i <= end; i++)
 {
 
@@ -75,7 +76,7 @@ image_pnc = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif"
 open(image_pnc);
 
 //Lower max intensity
-run("Divide...", "value=260 stack"); //might need to change value, Acetree prefers max ~250 
+run("Divide...", "value=26 stack"); //might need to change value, Acetree prefers max ~250 
 ID1 = getImageID();
 
 //Normalize for background noise
@@ -96,7 +97,7 @@ open(image_tc);
 
 
 //Lower max intensity
-run("Divide...", "value=260 stack"); //Might need to change value, Acetree prefers max ~250
+run("Divide...", "value=26 stack"); //Might need to change value, Acetree prefers max ~250
 ID2 = getImageID();
 
  //Normalize for background noise

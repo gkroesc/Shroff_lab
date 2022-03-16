@@ -16,6 +16,7 @@ Dialog.show();
 start = Dialog.getNumber();
 end = Dialog.getNumber();
 
+setBatchMode(true);
 for(i = start; i <= end; i++)
 {
 open(Path + "\\SPIMB\\SPIMB-"+i+".tif");
