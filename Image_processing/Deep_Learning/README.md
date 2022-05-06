@@ -1,7 +1,7 @@
 # Deep Learning Networks:
 These are the two Deep Learning networks that are applied to diSPIM images. Our current 3D-RCAN model is used on any datasat that contains only nuclei. Any images with fluorescent structures other than nuclei (membranes, pharyngeal surface, etc.) should use the Densenet model.
 ## 3D RCAN
-Derived from the paper [Three-dimensional residual channel attention networks denoise and sharpen fluorescence microscopy image volumes](https://www.biorxiv.org/content/10.1101/2020.08.27.270439v1). The weights for the trained model that we use can be found in the Model_step1 and Model_step2 folders within this repository. When using 3D-RCAN for the first time follow the Dependencies Installation instructions found in the README file of the repository below. If using pretrained model skip to Applying the Model section. 
+Derived from the paper [Three-dimensional residual channel attention networks denoise and sharpen fluorescence microscopy image volumes](https://www.biorxiv.org/content/10.1101/2020.08.27.270439v1). Our specific model features two steps, the first step is de-aberration and the second is deconvolution. The weights for the trained model that we use can be found in the Model_step1 and Model_step2 folders within this repository. When using 3D-RCAN for the first time follow the Dependencies Installation instructions found in the README file of the repository below. If using pretrained model skip to Applying the Model section. 
 
 ### Download/Training instructions
 Download the 3D-RCAN repository from the AiviaCommunity page that can be accessed [here](https://github.com/AiviaCommunity/3D-RCAN.git).
