@@ -1,20 +1,3 @@
-macro "splitDualViewReg"{
-// This macro is to create a simple User Interface within ImageJ and 
-// launch the reg_3d_affine.exe console and pass arguments to the console
-// for split dual-view dual-color imaging
-// Min Guo, May 28, 2019
-
-
-// close all windows
-while (nImages>0) {
-          selectImage(nImages); 
-          close(); 
-      }
-
-//*** Default setup****
-// Default folders/files for CUDA app
-appPath = "C:\\Users\\kroeschellga\\Desktop\\Worm_untwisting_project\\Image_processing\\Registration\\CudaApp\\";
-
 
 bgValue = 100;  //background value for bio-sample images
 
@@ -28,11 +11,6 @@ pixelSizeAx = 0.1625;
 pixelSizeAy = 0.1625;
 pixelSizeAz = 1;
 
-//initial matrix for beads image
-tmxChoice= "2D registration"; //"Default", "Customized" or "2D registration"
-
-dQuery = false; // show GPU information or not
-deviceNum = 0; // GPU device #
 
 // log file name
 fileLog = "cropping log.txt";
@@ -65,18 +43,7 @@ Dialog.addNumber(" ", pixelSizeAy,4,6,"um");
 Dialog.setInsets(-28, 200, 0);
 Dialog.addNumber(" ", pixelSizeAz,4,6,"um");
 
-// registration parameters for beads
-Dialog.addMessage("\n");
-Dialog.addMessage("Set Beads Registration Options");
-items = newArray("Default", "Customized",  "2D registration");
-Dialog.setInsets(0, 40, 0);
-Dialog.addRadioButtonGroup("Initial matrix", items, 1, 3, tmxChoice);
 
-//GPU device settings
-Dialog.addMessage("\n");
-Dialog.addMessage("Set GPU Options");
-Dialog.addCheckbox("Show GUP Device Information", dQuery);
-Dialog.addNumber("GPU Device #", deviceNum);
 
 Dialog.show();
 
@@ -94,26 +61,6 @@ pixelSizeAx = Dialog.getNumber();
 pixelSizeAy = Dialog.getNumber();
 pixelSizeAz = Dialog.getNumber();
 
-// registration
-tmxChoice = Dialog.getRadioButton();// 0, 1, 2;
-if(tmxChoice=="Default"){
-	flagInitialTmx = 0;
-	fileTmx = "Balabalabala";
-}
-else if(tmxChoice=="Customized"){
-	flagInitialTmx = 1; // 
-	fileTmx =  File.openDialog("Select transform matrix file");
-}
-else if(tmxChoice=="2D registration"){
-	flagInitialTmx = 2;
-	fileTmx = "Balabalabala";
-}
-
-//Set GPU Options
-dQuery = Dialog.getCheckbox();
-deviceNum = Dialog.getNumber();
-
-//CUDA app
 
 //*****ROI cropping***** ///
 //files and folders for cropping
@@ -124,7 +71,7 @@ folderCroppedSPIMA2 = "C2\\";
 fileNameCroppedSPIMA1 = "C1_";
 fileNameCroppedSPIMA2 = "C2_";
 
-folderCroppedBeads = "Beads\\";
+folderCroppedBeads = "Bead\\";
 fileNameCroppedBeadsSPIMA1 = "Beads_C1_";
 fileNameCroppedBeadsSPIMA2 = "Beads_C2_";
 
@@ -227,50 +174,3 @@ print(flog, "... ... ... SPIMA Color 2 coordinates for cropping (x, y, width, he
 print(flog,"... background subtraction value:" + bgValue + "\n");
 
 File.close(flog);
-
-// *****registration and deconvultion ****** //
-// choose CUDA app
-cudaExe = appPath + "reg_3d_affine.exe";
-
-
-// **** Beads **** //
-folderRegBeads = "Reg_Beads\\";
-pathRegBeads = pathOutput + folderRegBeads;
-File.makeDirectory(pathRegBeads);
-
-// registration for beads
-//interpolation
-pathSPIMA0 = pathOutput + folderCropped + folderCroppedBeads;
-pathSPIMB0 = pathOutput + folderCropped + folderCroppedBeads;
-nameA0 = fileNameCroppedBeadsSPIMA1;
-nameB0 = fileNameCroppedBeadsSPIMA2;
-pathOutput0 = pathRegBeads;
-
-print("Performing registration for beads ...\n...\n");
-result = exec(cudaExe,pathOutput0,pathSPIMA0,pathSPIMB0,nameA0,nameB0,0,0,1,0, 
-			pixelSizeAx,pixelSizeAy,pixelSizeAz,pixelSizeAx,pixelSizeAy,pixelSizeAz, 2,
-			0,flagInitialTmx, fileTmx, 1, 1,dQuery,deviceNum);
-print("Beads registration: \n"+result);
-
-
-// **** Sample **** //
-// registration for sample
-pathFinal = pathOutput + "Reg_Sample\\";
-pathSPIMA0 = pathOutput + folderCropped + folderCroppedSPIMA1;
-pathSPIMB0 = pathOutput + folderCropped + folderCroppedSPIMA2;
-nameA0 = fileNameCroppedSPIMA1;
-nameB0 = fileNameCroppedSPIMA2;
-pathOutput0 = pathFinal;
-flagInitialTmx = 1;
-fileTmx = pathRegBeads + "TMX\\Matrix_0.tmx";
-dQuery= 0;
-
-print("Performing registration for sample ...\n...\n");
-result = exec(cudaExe,pathOutput0,pathSPIMA0,pathSPIMB0,nameA0,nameB0,imageNumStart,imageNumEnd,
-			imageNumInterval,imageNumTest, 
-			pixelSizeAx,pixelSizeAy,pixelSizeAz,pixelSizeAx,pixelSizeAy,pixelSizeAz, 0,
-			0,flagInitialTmx, fileTmx, 1, 1,dQuery,deviceNum);
-print("Sample registration \n"+result);
-
-print("\n\n ***All processing completed !!! *** \n"+result);
-}

@@ -8,13 +8,14 @@ File.makeDirectory(Path + "\\StarryNite\\tifr\\")
 
 
 start = 0 //First timepoint that you want to rotate (generally 0)
-startslice = 176 //Z slice where signal first appears AFTER rotating
+startslice = 120 //Z slice where signal first appears AFTER rotating
 redstart = 200 //Timepoint you want the red channel to be added to dataset	 
-twitch = 369 //Timepoint twitching begins at
+twitch = 385 //Timepoint twitching begins at
 savefinal = 1
+trackingchannel = 'RegA' 
+pnc = 'RegB'
 
-
-x1=70.0; y1=20.0; z1=-70.0; //Degrees in x, y, and z that embryo needs to be rotated in order to be in canonical orientation
+x1=0.0; y1=5.0; z1=-95.0; //Degrees in x, y, and z that embryo needs to be rotated in order to be in canonical orientation
 
 rotation="z-angle="+z1+" y-angle="+y1+" x-angle="+x1+" interpolation=[Cubic B-Spline] background=0.0 adjust resample";
 
@@ -26,6 +27,8 @@ Dialog.addNumber("Timepoint when twitching starts", twitch);
 Dialog.addNumber("X rotation angle ", x1);
 Dialog.addNumber("Y rotation angle", y1);
 Dialog.addNumber("Z rotation angle", z1);
+Dialog.addString("Pan-Nuclear channel", pnc);
+Dialog.addString("Tracking channel", trackingchannel); 
 Dialog.show();
 start = Dialog.getNumber();
 startslice = Dialog.getNumber();
@@ -34,6 +37,8 @@ twitch = Dialog.getNumber();
 x1 = Dialog.getNumber();
 y1 = Dialog.getNumber();
 z1 = Dialog.getNumber();
+pnc = Dialog.getString();
+tc = Dialog.getString();
 
 stop = twitch + 1
 
@@ -45,7 +50,7 @@ file=File.open(Path + "\\StarryNite\\matricies.txt");
 
 setBatchMode(true);
 for (i=start;i<=stop;i++){
-	open(Path + "\\RegB\\Decon_reg_"+i+".tif");
+	open(Path + "\\" + pnc + "\\Decon_reg_"+i+".tif");
 	rename("Decon_reg_"+i+".tif");
 	
 	run("TransformJ Rotate", rotation);
@@ -76,7 +81,7 @@ for (i=start;i<=stop;i++){
     	if(i==twitch-1){
 	selectWindow("Decon_reg_"+i+".tif rotated");
     run("Slice Keeper", "first="+startslice+" last="+startslice+200+" increment=1");
-    saveAs("Tiff", Path + "\\Rotated\\RegB\\Decon_r_reg_"+t+".tif");
+    saveAs("Tiff", Path + "\\Rotated\\" + pnc + "\\Decon_r_reg_"+t+".tif");
     }}
 	
 	run("Close All");
@@ -86,7 +91,7 @@ for (i=start;i<=stop;i++){
 
 setBatchMode(true);
  for (i=redstart;i<=stop;i++){   
-    open(Path + "\\RegA\\Decon_reg_"+i+".tif");
+    open(Path + "\\" + trackingchannel + "\\Decon_reg_"+i+".tif");
     rename("Decon_reg_"+i+".tif");
     
     run("TransformJ Rotate", rotation);
@@ -115,7 +120,7 @@ setBatchMode(true);
     	if(i==twitch-1){
 	selectWindow("Decon_reg_"+i+".tif rotated");
     run("Slice Keeper", "first="+startslice+" last="+startslice+200+" increment=1");
-    saveAs("Tiff", Path + "\\Rotated\\RegA\\Decon_r_reg_"+t+".tif");
+    saveAs("Tiff", Path + "\\Rotated\\" + trackingchannel + "\\Decon_r_reg_"+t+".tif");
     	}}
 	run("Close All");
 }

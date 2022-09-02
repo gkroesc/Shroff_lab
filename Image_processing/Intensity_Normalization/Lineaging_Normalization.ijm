@@ -9,16 +9,18 @@ File.makeDirectory(Path + "\\For_Lineaging\\RegA\\");
 
 //Enter first and last timepoint here 
 start = 0;
+start_red = 200;
 end = 418;
-pnc = "RegB"
-pnc_prefix = "DL_C2"
-tc = "RegA"
-tc_prefix = "DL_C1"
+pnc = "RegB";
+pnc_prefix = "DL_C2";
+tc = "RegA";
+tc_prefix = "DL_C1";
 
 
 //Add the first and last time point as the two values here
 Dialog.create("Enter imagin Run Info");
 Dialog.addNumber("Start", start);
+Dialog.addNumber("Start Red", start_red);
 Dialog.addNumber("End", end);
 Dialog.addString("Pan-Nuclear channel", pnc);
 Dialog.addString("Pan-Nuclear channel image prefix", pnc_prefix);
@@ -26,6 +28,7 @@ Dialog.addString("Tracking channel", tc);
 Dialog.addString("Tracking channel image prefix", tc_prefix);
 Dialog.show();
 start = Dialog.getNumber();
+start_red = Dialog.getNumber();
 end = Dialog.getNumber();
 pnc = Dialog.getString();
 pnc_prefix = Dialog.getString();
@@ -50,7 +53,7 @@ close('*');
 
 
 
-og_image_b = Path + "\\RCAN_2Step_DL_" + tc + "\\" +tc_prefix+ "_reg_0.tif";
+og_image_b = Path + "\\RCAN_2Step_DL_" + tc + "\\" +tc_prefix+ "_reg_"+start_red+".tif";
 open(og_image_b);
 IDB = getImageID();
 run("Z Project...", "projection=[Max Intensity]");
@@ -72,11 +75,13 @@ for(i = start; i <= end; i++)
 {
 
 //Add directory of pan nuclear channel here (most liekly green)
-image_pnc = Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif";
-open(image_pnc);
+//image_pnc = 
+open(Path + "\\RCAN_2Step_DL_" + pnc + "\\" +pnc_prefix+ "_reg_"+i+".tif");
+
+
 
 //Lower max intensity
-run("Divide...", "value=26 stack"); //might need to change value, Acetree prefers max ~250 
+//run("Divide...", "value=10 stack"); //might need to change value, Acetree prefers max ~250 
 ID1 = getImageID();
 
 //Normalize for background noise
@@ -87,17 +92,20 @@ a = getValue("Mean");
 selectImage(ID1);
 run("Subtract...", "value=a stack");
 
+run("Divide...", "value=100 stack"); 
+
 //Switch to RegB and rename all images with prefix Decon_reg
 saveAs("Tiff", Path + "\\For_Lineaging\\"+tc+"\\Decon_reg_"+i+".tif");
 close('*');
-
+}
+for (i = start_red; i <= end; i++) {
 //Add directory of channel that you want to lineage (Most likely red)
-image_tc =  Path +"\\RCAN_2Step_DL_" +tc+ "\\" +tc_prefix+ "_reg_"+i+".tif";
-open(image_tc);
+//image_tc =  
+open(Path +"\\RCAN_2Step_DL_" +tc+ "\\" +tc_prefix+ "_reg_"+i+".tif");
 
 
 //Lower max intensity
-run("Divide...", "value=26 stack"); //Might need to change value, Acetree prefers max ~250
+ //Might need to change value, Acetree prefers max ~250
 ID2 = getImageID();
 
  //Normalize for background noise
@@ -108,7 +116,10 @@ b = getValue("Mean");
 selectImage(ID2);
 run("Subtract...", "value=b stack");
 
+run("Divide...", "value=100 stack");
+
 //Switch to RegA and rename all images with prefix Decon_reg
 saveAs("Tiff", Path + "\\For_Lineaging\\"+pnc+"\\Decon_reg_"+i+".tif");
 close('*');
 }
+
