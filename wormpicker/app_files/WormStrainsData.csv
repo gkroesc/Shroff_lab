@@ -1,0 +1,31 @@
+Name,Date Picked,Date Added,Strain Type,Constructs,Location,Experimental Status,Maintenance Frequency,Notes,Remind Date,Number of Plates
+test,4/7/2025,3/11/2022,test,test,Middle shelf,,3,,4/10/2025,1
+plx-2,8/29/2022,4/4/2022,Integrated,,Middle Shelf,"Maintaining, Crossing",7,"Frozen, do not pick",9/5/2022,1
+nhr-82/ajm-1 v3.0,8/28/2022,6/3/2022,Integrated,,,Maintaining,3,,9/1/2022,1
+efn-4,8/30/2022,6/22/2022,Integrated,,,,3,"Frozen, do not pick",9/2/2022,1
+efn-1,8/28/2022,5/20/2022,Integrated,,,Maintaining,3,,9/1/2022,1
+Vab-1,8/29/2022,5/12/2022,Integrated,,Top Shelf,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+SLS-6 x dpy-7::mScarlet,8/30/2022,2/8/2022,Integrated,,Middle shelf,Maintaining,3,,9/2/2022,
+SLS-6 x RW10711,8/30/2022,2/8/2022,Integrated,,Middle shelf,Maintaining,7,,9/6/2022,
+SLS-6,8/29/2022,2/7/2022,Integrated,,Middle shelf,Maintaining,3,,9/1/2022,
+SLS-11,8/30/2022,2/8/2022,Integrated,,Middle shelf,Maintaining,7,Standard red lineaging strain,9/6/2022,
+RW10584,8/30/2022,2/7/2022,Integrated,,Middle shelf,Maintaining,7,"Frozen, do not pick",9/6/2022,
+RW10557,8/25/2022,2/8/2022,Integrated,,Middle shelf,Maintaining,7,"Frozen, do not pick",9/1/2022,
+RW10131,8/30/2022,2/7/2022,Integrated,,Middle shelf,Maintaining,7,"Frozen, do not pick",9/6/2022,
+OP562,8/23/2022,2/8/2022,Integrated,,Middle shelf,Maintaining,7,"Frozen, do not pick",9/1/2022,
+OH15262,8/23/2022,2/8/2022,Integrated,NeuroPAL,Middle shelf,Maintaining,7,"Frozen, do not pick",9/1/2022,
+NG8398 ,8/25/2022,2/8/2022,Integrated,gmIS373,Middle shelf,Maintaining,7,"Frozen, do not pick",9/1/2022,
+N2,8/28/2022,2/8/2022,,,Middle shelf,Maintaining,7,,9/4/2022,
+DCR6485 x GG23,8/29/2022,2/7/2022,Array,olaEX3847 prpm-1::phd::GFP,15C incubator,Maintaining,7,"bleached on 7/1, continue checking progeny",9/5/2022,
+BV514,8/27/2022,2/8/2022,"Integrated, Males",,Middle shelf,Maintaining,3,,9/1/2022,
+ptr-10,8/20/2022,7/8/2022,,,,,3,,9/1/2022,1
+unc-86 delta,8/26/2022,7/8/2022,,,,,3,,9/1/2022,1
+grd-10,8/29/2022,7/20/2022,,,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+ceh-16,8/29/2022,7/20/2022,,,,Maintaining,3,,9/1/2022,1
+Srf-3,8/27/2022,7/20/2022,,,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+nlh-1::mNG,8/29/2022,7/22/2022,,,,,3,,9/1/2022,1
+elt-2::mNG,8/28/2022,7/22/2022,,,,,3,,9/1/2022,1
+efn-2,8/22/2022,8/1/2022,Integrated,mScarlet,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+plx-2_mScarlet,8/28/2022,8/1/2022,Integrated,mScarlet,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+egl-5,8/28/2022,8/1/2022,Integrated,mScarlet,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
+SCMP tdStayGold,8/29/2022,8/1/2022,Integrated,mScarlet,,Maintaining,3,"Frozen, do not pick",9/1/2022,1
