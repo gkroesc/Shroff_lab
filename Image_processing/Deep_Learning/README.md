@@ -6,9 +6,64 @@ Derived from the paper [Three-dimensional residual channel attention networks de
 ### Download/Training instructions
 Download the 3D-RCAN repository from the AiviaCommunity page that can be accessed [here](https://github.com/AiviaCommunity/3D-RCAN.git).
 - Follow the Training instructions found in the README file from that repository
-
+- The environment currently used as of 09/02/2022 contains the following packages:
+   ```
+   Package              Version
+   -------------------- ---------
+   absl-py              0.13.0
+   astor                0.8.1
+   attrs                21.2.0
+   cachetools           4.2.4
+   certifi              2021.5.30
+   charset-normalizer   2.0.12
+   colorama             0.4.4
+   gast                 0.2.2
+   google-auth          1.35.0
+   google-auth-oauthlib 0.4.6
+   google-pasta         0.2.0
+   grpcio               1.40.0
+   h5py                 2.10.0
+   idna                 3.3
+   importlib-metadata   4.8.1
+   jsonschema           3.2.0
+   Keras                2.2.4
+   Keras-Applications   1.0.8
+   Keras-Preprocessing  1.1.2
+   Markdown             3.3.4
+   mock                 4.0.3
+   numexpr              2.7.3
+   numpy                1.21.2
+   oauthlib             3.2.0
+   opt-einsum           3.3.0
+   pip                  21.2.2
+   protobuf             3.18.0
+   pyasn1               0.4.8
+   pyasn1-modules       0.2.8
+   pyrsistent           0.18.0
+   PyYAML               5.4.1
+   requests             2.27.1
+   requests-oauthlib    1.3.1
+   rsa                  4.8
+   scipy                1.7.1
+   setuptools           58.0.4
+   six                  1.16.0
+   tensorboard          1.15.0
+   tensorflow           2.0.0
+   tensorflow-estimator 1.15.1
+   tensorflow-gpu       1.15.0
+   termcolor            1.1.0
+   tifffile             2021.8.30
+   tqdm                 4.62.3
+   typing-extensions    3.10.0.2
+   urllib3              1.26.9
+   Werkzeug             2.0.1
+   wheel                0.37.0
+   wincertstore         0.2
+   wrapt                1.14.0
+   zipp                 3.5.0
+   ```
 ### Applying the Model
-The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps0.py file. The many version of this file is an implementation of the script that can run the model on multiple positions or channels sequentially. 
+The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps0.py file. The seq version of this file is an implementation of the script that can run the model on multiple positions or channels sequentially. 
 
 **Base Version Script Adjustments**
 - Line 25
@@ -67,3 +122,81 @@ The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps
   ```
 
 ## Densenet 
+This network is used on the untwisting channel of our images, or any channel that imaged anything besides nuclei 
+
+### Setup
+The enviroment used to run this model contains the following packages:
+```
+Package                 Version
+----------------------- ----------
+absl-py                 0.13.0
+astunparse              1.6.3
+cached-property         1.5.2
+cachetools              4.2.2
+certifi                 2021.5.30
+charset-normalizer      2.0.6
+clang                   5.0
+flatbuffers             1.12
+gast                    0.4.0
+google-auth             1.35.0
+google-auth-oauthlib    0.4.6
+google-pasta            0.2.0
+grpcio                  1.40.0
+h5py                    3.1.0
+idna                    3.2
+importlib-metadata      4.8.1
+keras                   2.6.0
+Keras-Preprocessing     1.1.2
+Markdown                3.3.4
+numpy                   1.19.5
+oauthlib                3.1.1
+opt-einsum              3.3.0
+pip                     21.2.2
+protobuf                3.18.0
+pyasn1                  0.4.8
+pyasn1-modules          0.2.8
+requests                2.26.0
+requests-oauthlib       1.3.0
+rsa                     4.7.2
+setuptools              58.0.4
+six                     1.15.0
+tensorboard             2.6.0
+tensorboard-data-server 0.6.1
+tensorboard-plugin-wit  1.8.0
+tensorflow-estimator    2.6.0
+tensorflow-gpu          2.6.0
+termcolor               1.1.0
+tifffile                2021.8.30
+tiffile                 2018.10.18
+typing-extensions       3.7.4.3
+urllib3                 1.26.6
+Werkzeug                2.0.1
+wheel                   0.37.0
+wincertstore            0.2
+wrapt                   1.12.1
+zipp                    3.5.0
+```
+
+### Applying the Model
+The script for running the model is found in the Densenet_SeamCell_DL.py file.
+
+**Script Adjustments**
+-Line 25
+```
+data_dir = 'path\to\input\image\channels'
+```
+-Line 27
+```
+test_folder = 'channel'
+```
+
+**Running the script**
+- Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
+  ```
+  python Densenet_SeamCell_DL.py
+  ```
+
+- Once runnning you should get this output should be a series of continuosly updating numbers that represents the number of seconds spent on each volume.
+
+- Once finished it should display:
+  ```
