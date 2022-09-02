@@ -200,3 +200,5 @@ test_folder = 'channel'
 
 - Once finished it should display:
   ```
+   Done Testing
+   ```
