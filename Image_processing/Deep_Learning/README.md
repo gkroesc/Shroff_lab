@@ -240,7 +240,7 @@ data_dir = 'path\to\input\image\channels'
 -Line 48
 ```
 input_folder = 'channel\'
-
+```
 **Running the script**
 - Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
   ```
