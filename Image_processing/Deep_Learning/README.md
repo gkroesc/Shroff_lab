@@ -200,6 +200,7 @@ test_folder = 'channel'
 -Line 501
 ```
 train_dir = 'path\to\SeamCellModel'
+```
 
 **Running the script**
 - Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
@@ -211,8 +212,8 @@ train_dir = 'path\to\SeamCellModel'
   
 - Once finished it should display:
   ```
-   Done Testing
-   ```
+  Done Testing
+  ```
 
 
 ## Richardson-Lucy Network
@@ -252,6 +253,6 @@ input_folder = 'channel\'
   ```
 - Once finished it should display:
   ```
-   Done Testing
+  Done Testing
   ```
 
