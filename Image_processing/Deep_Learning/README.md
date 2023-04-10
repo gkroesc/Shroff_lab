@@ -122,10 +122,12 @@ The base script for running the model is found in the RCAN_Apply_diSPIM_TwoSteps
   ```
 
 ## Densenet 
-This network is used on the untwisting channel of our images, or any channel that imaged anything besides nuclei 
+Derived from the paper [Rapid image deconvolution and multiview fusion for optical microscopy](https://www.nature.com/articles/s41587-020-0560-x)This network is used on the green untwisting channel. The pretrained model shared in this directory is for deconvolution of image volumes, and it can be found in the SeamCellModel folder. If training, follow the instructions found in the DeepLearning folder within the repository linked below, if using pretrained model skip to Applying the Model section.
+
+
 
 ### Setup
-The enviroment used to run this model contains the following packages:
+The Densenet_SeamCell_DL.py script has been adapted from repository found [here](https://github.com/eguomin/regDeconProject). There is not a requirements file in this repository as our script was adapted from Matlab, the enviroment used to run this model contains the following packages:
 ```
 Package                 Version
 ----------------------- ----------
@@ -136,6 +138,9 @@ cachetools              4.2.2
 certifi                 2021.5.30
 charset-normalizer      2.0.6
 clang                   5.0
+colorama                0.4.6              
+cudatoolkit             11.7.0              
+cudnn                   8.4.1.50
 flatbuffers             1.12
 gast                    0.4.0
 google-auth             1.35.0
@@ -155,6 +160,7 @@ pip                     21.2.2
 protobuf                3.18.0
 pyasn1                  0.4.8
 pyasn1-modules          0.2.8
+python                  3.7.0
 requests                2.26.0
 requests-oauthlib       1.3.0
 rsa                     4.7.2
@@ -168,6 +174,8 @@ tensorflow-gpu          2.6.0
 termcolor               1.1.0
 tifffile                2021.8.30
 tiffile                 2018.10.18
+torch                   1.12.1                   
+tqdm                    4.65.0
 typing-extensions       3.7.4.3
 urllib3                 1.26.6
 Werkzeug                2.0.1
@@ -189,6 +197,9 @@ data_dir = 'path\to\input\image\channels'
 ```
 test_folder = 'channel'
 ```
+-Line 501
+```
+train_dir = 'path\to\SeamCellModel'
 
 **Running the script**
 - Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
@@ -197,8 +208,50 @@ test_folder = 'channel'
   ```
 
 - Once runnning you should get this output should be a series of continuosly updating numbers that represents the number of seconds spent on each volume.
-
+  
 - Once finished it should display:
   ```
    Done Testing
    ```
+
+
+## Richardson-Lucy Network
+Derived from the paper [Incorporating the image formation process into deep learning improves network performance](https://www.nature.com/articles/s41592-022-01652-7)This network is used on the red untwisting channel. The pretrained model shared in this directory is for deconvolution of image volumes containing both a seam cell nuclear marker and a hypodermal adherens junction marker, it can be found in the RedUntwistingModel folder. If training, follow the instructions found in the repository linked below, if using pretrained model skip to Applying the Model section.
+
+
+
+### Setup
+The RLN_single.py script has been adapted from repository found [here](https://github.com/MeatyPlus/Richardson-Lucy-Net). The same virtual environment used above for the densenet was used for this network as well.
+
+### Applying the Model
+The script for running the model is found in the RLN_single.py file.
+
+**Script Adjustments**
+-Line 44
+```
+train_model_path = 'path\to\RedUntwistingModel'
+```
+-Line 47
+```
+data_dir = 'path\to\input\image\channels'
+```
+-Line 48
+```
+input_folder = 'channel\'
+
+**Running the script**
+- Open up the command line and navigate to the directory where the above file is found. Ensure that you are in the correct virtual environment if necessary and run:
+  ```
+  python RLN_single.py
+  ```
+
+- Once runnning you should get this output that looks like:
+  ```
+  num 0, runtime:4.755948
+  num 1, runtime:4.322918
+  ```
+- Once finished it should display:
+  ```
+   Done Testing
+  ```
+
