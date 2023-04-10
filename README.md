@@ -4,7 +4,6 @@ This repository contains the various codes used by the Shroff lab C. elegans unt
 
   1. Image Processing
   2. Segmentation
-  3. Wormpicker
   4. Model building
 
 
