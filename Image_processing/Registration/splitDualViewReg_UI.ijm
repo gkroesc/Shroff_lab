@@ -20,6 +20,8 @@ bgValue = 100;  //background value for bio-sample images
 
 bgValueBeads = 100; //background value for beads images
 
+zFlip = 1; //Depends on which system you are using, 0 for nih dispim where z is not flipped, 1 for janelia dispim in which z is flipped
+
 
 // Default parameters
 nameA = "SPIMB-";
@@ -181,12 +183,18 @@ makeRectangle(ROIA1[0], ROIA1[1], ROIA1[2], ROIA1[3]);
 run("Duplicate...", "duplicate");
 IDA1 = getImageID();
 run("Subtract...", "value=" + bgValueBeads + " stack");
+if(zFlip == 1){
+	run("Flip Z");
+}
 saveAs("Tiff", fileSPIMA1);
 close();
 makeRectangle(ROIA2[0], ROIA2[1], ROIA2[2], ROIA2[3]);
 run("Duplicate...", "duplicate");
 IDA2 = getImageID();
 run("Subtract...", "value=" + bgValueBeads + " stack");
+if(zFlip == 1){
+	run("Flip Z");
+}
 saveAs("Tiff", fileSPIMA2);
 close();
 selectImage(IDA);
@@ -205,12 +213,18 @@ for(i = imageNumStart; i<= imageNumEnd; i = i + imageNumInterval){
 	run("Duplicate...", "duplicate");
 	IDA1 = getImageID();
 	run("Subtract...", "value=" + bgValue + " stack");
+	if(zFlip == 1){
+	run("Flip Z");
+	}
 	saveAs("Tiff", fileSPIMA1);
 	close();
 	makeRectangle(ROIA2[0], ROIA2[1], ROIA2[2], ROIA2[3]);
 	run("Duplicate...", "duplicate");
 	IDA2 = getImageID();
 	run("Subtract...", "value=" + bgValue + " stack");
+	if(zFlip == 1){
+	run("Flip Z");
+	}
 	saveAs("Tiff", fileSPIMA2);
 	close();
 	selectImage(IDA);
