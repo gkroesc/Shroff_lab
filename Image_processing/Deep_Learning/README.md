@@ -189,6 +189,7 @@ zipp                    3.5.0
 The script for running the model is found in the Densenet_SeamCell_DL.py file.
 
 **Script Adjustments**
+
 -Line 25
 ```
 data_dir = 'path\to\input\image\channels'
