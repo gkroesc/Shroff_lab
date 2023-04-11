@@ -218,7 +218,7 @@ train_dir = 'path\to\SeamCellModel'
 
 
 ## Richardson-Lucy Network
-Derived from the paper [Incorporating the image formation process into deep learning improves network performance](https://www.nature.com/articles/s41592-022-01652-7)This network is used on the red untwisting channel. The pretrained model shared in this directory is for deconvolution of image volumes containing both a seam cell nuclear marker and a hypodermal adherens junction marker, it can be found in the RedUntwistingModel folder. If training, follow the instructions found in the repository linked below, if using pretrained model skip to Applying the Model section.
+Derived from the paper [Incorporating the image formation process into deep learning improves network performance](https://www.nature.com/articles/s41592-022-01652-7)This network is used on the red untwisting channel. The pretrained model shared in this directory is for deconvolution of image volumes containing both a seam cell nuclear marker and a hypodermal adherens junction marker, it can be found in the RedUntwistingModel folder. If training, follow the instructions found in the repository linked below, if using pretrained model skip to Applying the Model section. An example of a training dataset can be found in the example_training_data_rln folder.
 
 
 
