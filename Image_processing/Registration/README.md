@@ -6,6 +6,7 @@ This is the last processing step before images are put through deep learning. It
 Use this version if the dual color image splitter was used on the diSPIM and two different colors of fluoresence were imaged simultaneously. If using for the first time you must adjust the CUDA app path to match the location where you downloaded this repository on line 16 of the macro.
 ```
 appPath = "\\path\to\repository\Worm_untwisting_project\Image_processing\Registration\CudaApp\"
+```
 
 You will be prompted with two max projections, one from each channel, and a pop up instructing you to press OK when the correct region of interest is selected. Use the rectangle tool to draw a 325x425 box around the embryo, making sure to keep all signal within the edges of the box. Once this is done for one of the channels press Ctrl + Shift + E on the keyboard to copy that same sized box onto the other max projection. Once the second box is adjusted to fit the entire embryo, press OK to start running.
 
