@@ -18,8 +18,8 @@ More detailed instructions can be found in the SimpleManul.pdf file.
 
 There is now a variable zFlip specified on line 23 of the macro. Set = 0 if there is no z flipping necessary for the imaging system (NIH dispim), set = 1 if images are flipped in z (Janelia dispim). For a new system this will have to be determined empirically.
 
-## Bypass Cropping
-Use this version if bypass mode was used on the diSPIM and only one color was used for fluorescence.
+## Bypass Cropping and Reslicing
+Use this version if bypass mode was used on the diSPIM and only one color was imaged so registration is not necessary.
 
 You will be prompted with a single max projection and a pop up instructing you to press OK when the correct region of interest is selected. Use the rectangle tool to draw a 325x425 box around the embryo, making sure to keep all signal within the edges of the box. Once positioned correctly press OK to start running.
   
