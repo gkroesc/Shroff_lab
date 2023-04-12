@@ -1,6 +1,6 @@
 # Registration
 
-This is the last processing step before images are put through deep learning. It crops down each image and rescales in z so that it has the correct number of slices. All are used by dragging and dropping the file into Fiji which opens the interacive macro editor. Once open press run and a dialog box should pop up where you can specify input filepaths and details of the imaging run.
+This is the last processing step before images are put through deep learning. It performs registration of dual-view images so that the two colors align when overlayed. Additionally it crops down each image and rescales in z so that it has the correct number of slices. All are used by dragging and dropping the file into Fiji which opens the interacive macro editor. Once open press run and a dialog box should pop up where you can specify input filepaths and details of the imaging run.
 
 ## Split Dual-view Application
 Use this version if the dual color image splitter was used on the diSPIM and two different colors of fluoresence were imaged simultaneously. If using for the first time you must adjust the CUDA app path to match the location where you downloaded this repository on line 16 of the macro.
