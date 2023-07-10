@@ -1,4 +1,4 @@
-# Rotate and Slice for Lineaging
+# Rotate and Slice.ijm
 
 Use this file to prepare a lineaging dataset for AceTree. It rotates all of the images are in canonical orientation and each slice is saved ans an individual image. This should be done after deep learning and normalization have been run on the images, this is the last step before viewing the data in AceTree.
 
@@ -19,3 +19,13 @@ Once these values are determined, drag and drop this file into Fiji which opens 
 
 
 The output is found in the StarryNite folder that is generated. The images are saved in the tif anf tifr folders and the paths just need to be specified in the Decon_emb1_edited.xml file within your SN_Files directory. 
+
+# Slice_Saver.ijm
+
+Short macro for when slice saving needs to be done on a single channel after images have already been rotated, it also normalizes and saves the slices as 8-bit. This is most useful when StarryNite was run on a single channel, and the images from the other channel need to be set up so that both can be viewed and edited in AceTree. 
+
+## Setup:
+
+Drag and drop this file into fiji and press run in the macro editor window, a dialoge box will appear where you specify the path to the rotated images and other parameters like the first and last timepoint and slice. 
+
+The output is placed into a tifr folder generated within the input filepath. This folder can be placed next to the tif folder that is output from StarryNite in order to view both colors simultanweously in AceTree.
