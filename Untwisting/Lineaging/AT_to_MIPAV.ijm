@@ -1,7 +1,7 @@
 Path = getDir("Path to AceTree tif and tifr parent folder");
-File.makeDirectory(Path + "\\For_MIPAV\\");
-File.makeDirectory(Path + "\\For_MIPAV\\RegA\\");
-File.makeDirectory(Path + "\\For_MIPAV\\RegB\\");
+File.makeDirectory(Path + "\\For_mipav\\");
+File.makeDirectory(Path + "\\For_mipav\\RegA\\");
+File.makeDirectory(Path + "\\For_mipav\\RegB\\");
 
 start = 1;
 redstart = 200;
@@ -23,7 +23,7 @@ File.openSequence(Path + "\\tif", "virtual");
 setBatchMode(true);
 for (i = start; i <=end; i++) {
 run("Make Substack...", "slices=1-"+slice_num+" delete");
-saveAs("Tiff", Path + "\\For_MIPAV\\RegB\\Decon_reg_"+i+".tif");
+saveAs("Tiff", Path + "\\For_mipav\\RegB\\Decon_reg_"+i+".tif");
 close();
 }
 
@@ -33,6 +33,6 @@ File.openSequence(Path + "\\tifr", "virtual");
 setBatchMode(true);
 for (i = redstart; i <=end; i++) {
 run("Make Substack...", "slices=1-"+slice_num+" delete");
-saveAs("Tiff", Path + "\\For_MIPAV\\RegA\\Decon_reg_"+i+".tif");
+saveAs("Tiff", Path + "\\For_mipav\\RegA\\Decon_reg_"+i+".tif");
 close();
 }
