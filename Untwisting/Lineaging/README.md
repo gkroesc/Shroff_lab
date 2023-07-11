@@ -32,8 +32,8 @@ If using for the fist time the path to cellKeyMaster in line 57 needs to be adju
 
 The output of both of these codes is found in a For_mipav folder generated within the StarryNite folder. The RegA and RegB folders within this directory should be ready for loading into MIPAV.
 
-### Cell Namer
-This is the built in naming function from the above script extracted so that it can be run on a single annotations csv file outside the full code if necessary. Placing an annotation.csv file into this CellNamer folder and then running cellNamer.py causes it to output an updated_annotations.csv file in the same folder with terminally differentiated cell names updated. 
+### CellNamer
+This folder allows you to run the built in naming function from the above script on a single annotations csv file outside the full code if necessary. Placing an annotation.csv file into this CellNamer folder and then running cellNamer.py outputs an updated_annotations.csv file in the same folder with terminally differentiated cell names updated. 
 
 
 
