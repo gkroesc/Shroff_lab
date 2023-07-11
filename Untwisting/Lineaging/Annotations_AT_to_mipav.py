@@ -6,7 +6,7 @@ import numpy as np
 
 
 zip_path = "X:\\shrofflab\\efn-2\\121922_lin\\Pos2\\SPIMB\\Reg_Sample\\For_Lineaging\\StarryNite\\"
-
+cell_key_path = "C:\\Users\\kroeschellg\\Downloads\\Worm_untwisting_project\\Untwisting\\Lineaging\\CellNamer\\"
 
 timepoint = 50
 
@@ -48,12 +48,13 @@ def row_extractor(input_df):
             column7_value = row[7]
 
             new_row = {'name':column9_value, 'x_voxels': column5_value, 'y_voxels':column6_value, 'z_voxels':column7_value, 'R':255, 'G':255, 'B':255}
-            new_df = new_df.append(new_row, ignore_index=True)
+            new_row_df = pd.DataFrame(new_row, index=[0])
+            new_df = pd.concat([new_df, new_row_df],ignore_index=True)
     return new_df
 
 def cellNamer(input_df):
     
-    cellKeyMaster = 'C:\\Users\\kroeschellg\\Downloads\\Worm_untwisting_project\\Untwisting\\Lineaging\\CellNamer\\cellkeyMaster.csv'
+    cellKeyMaster = cell_key_path + 'cellkeyMaster.csv'
     seam_cells = ['H0L','H1L','H2L','V1L','V2L','V3L','V4L','V5L','V6L','TL','H0R','H1R','H2R','V1R','V2R','V3R','V4R','V5R','V6R','TR']
 
 
