@@ -53,7 +53,7 @@ def row_extractor(input_df):
 
 def cellNamer(input_df):
     
-    cellKeyMaster = 'C:\\Users\\kroeschellg\\Downloads\\Worm_untwisting_project_old\\Segmentation\\Lineaging\\CellNamer\\cellkeyMaster.csv'
+    cellKeyMaster = 'C:\\Users\\kroeschellg\\Downloads\\Worm_untwisting_project\\Untwisting\\Lineaging\\CellNamer\\cellkeyMaster.csv'
     seam_cells = ['H0L','H1L','H2L','V1L','V2L','V3L','V4L','V5L','V6L','TL','H0R','H1R','H2R','V1R','V2R','V3R','V4R','V5R','V6R','TR']
 
 
