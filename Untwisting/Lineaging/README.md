@@ -6,7 +6,7 @@ The ImageJ macro that converts image files into the correct format to load into 
 
 ## AceTree to MIPAV
 
-Set of two codes that convert AceTree data into a MIPAV friendly format so that the lineage can easily be viewed in 3D. Both scripts assume the foillowing basic folder structure of AceTree data:
+Set of two codes that convert AceTree data into a MIPAV friendly format so that the lineage can easily be viewed in 3D. Both scripts assume the following basic folder structure of AceTree data:
 ```
 StarryNite/: 
   |--SN_Files/: 
@@ -25,7 +25,7 @@ An ImageJ macro that converts the tif and tifr folders from AceTree into individ
 
 A python script designed to extract cell identities and coordinates from the AceTree nuclei files and convert them into an annotations.csv file that MIPAV can read. There is also a built in naming function that will change a lineage name to a common name if the cell is terminally differentiated (i.e. ABplapaaaapp becomes ADAL).
 
-If using for the fist time the path to cellKeyMaster in line 57 needs to be adjusted to point to the cellkeyMaster.csv file found in the CellNamer subfolder of this directory. Other than that the only changes that need to be made are to timepoint in line 11 to match what timepoint you are interested in, and to the zip_path in line 8 to point to you StarryNite parent directory.
+If using for the fist time the path to cellKeyMaster in line 63 needs to be adjusted to point to the cellkeyMaster.csv file found in the CellNamer subfolder of this directory. Other than that the only changes that need to be made are to start and end timepoint on lines 11 and 13 to match the timepoints you are interested in, and to the zip_path in line 8 to point to your StarryNite parent directory.
 
 **Always check that your zip file name matches that of the code: _Decon_emb_edited.zip_ or you change the filepath in line 21 of the code to match your zip file name** 
 
