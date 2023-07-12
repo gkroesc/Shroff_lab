@@ -4,7 +4,7 @@ Three simple scripts used for analysis and editing of annotation and tracking da
 
 ### tracking_changes.py
 
-This script allows you to edit the name of an annotation over a series of timepoints. To use, edit the path and start and end timepoint variables in lines 5-9. Then set exisitng annotation to the name of the annotation that you want to change, and new annotation to the name you want to change it to. To run, open an Anaconda prompt, navigate to the directory containing this script and type `python tracking_changes.py`. Annotation files should automatically be updated for all timepoints specified.
+This script allows you to edit the name of an annotation over a series of timepoints. To use, edit the path and start and end timepoint variables in lines 5-9. Then set exisitng annotation to the name of the annotation that you want to change, and new annotation to the name you want to change it to. To run, open an Anaconda prompt, navigate to the directory containing this script and type `python tracking_changes.py`. Annotation files should automatically be updated for all timepoints specified. 'Done' will be displayed in the command prompt when it has finished running.
 
 ### clip_check.py
 
