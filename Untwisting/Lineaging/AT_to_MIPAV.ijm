@@ -19,20 +19,35 @@ redstart = Dialog.getNumber();
 end = Dialog.getNumber();
 slice_num = Dialog.getNumber();
 
+
+setBatchMode(true);
 File.openSequence(Path + "\\tif", "virtual");
 setBatchMode(true);
 for (i = start; i <=end; i++) {
-run("Make Substack...", "slices=1-"+slice_num+" delete");
-saveAs("Tiff", Path + "\\For_mipav\\RegB\\Decon_reg_"+i+".tif");
-close();
+	if (i == end) {
+		saveAs("Tiff", Path + "\\For_mipav\\RegB\\Decon_reg_"+i+".tif");
+	}
+	else {
+		run("Make Substack...", "slices=1-"+slice_num+" delete");
+		saveAs("Tiff", Path + "\\For_mipav\\RegB\\Decon_reg_"+i+".tif");
+		close();
+	}
 }
 
 close('*')
 
-File.openSequence(Path + "\\tifr", "virtual");
-setBatchMode(true);
-for (i = redstart; i <=end; i++) {
-run("Make Substack...", "slices=1-"+slice_num+" delete");
-saveAs("Tiff", Path + "\\For_mipav\\RegA\\Decon_reg_"+i+".tif");
-close();
+if (end >= redstart) {
+	setBatchMode(true);
+	File.openSequence(Path + "\\tifr", "virtual");
+	setBatchMode(true);
+	for (i = redstart; i <=end; i++) {
+		if (i == end) {
+			saveAs("Tiff", Path + "\\For_mipav\\RegA\\Decon_reg_"+i+".tif");
+		}
+		else {
+			run("Make Substack...", "slices=1-"+slice_num+" delete");
+			saveAs("Tiff", Path + "\\For_mipav\\RegA\\Decon_reg_"+i+".tif");
+			close();	
+		}
+	}
 }
