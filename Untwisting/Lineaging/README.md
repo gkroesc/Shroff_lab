@@ -29,7 +29,7 @@ If using for the fist time the path to cellKeyMaster in line 63 needs to be adju
 
 To run this script open an Anaconda prompt, navigate to the directory that it is in and type: `python Annotations_AT_to_mipav.py`
 
-The output of both of these codes is found in a For_mipav folder generated within the StarryNite folder. The RegA and RegB folders within this directory should be ready for loading into MIPAV.
+The output of both of these codes is found in a For_mipav folder generated within the StarryNite folder, the default naming for annotation and image files is Decon_reg_#. The RegA and RegB folders within this directory should be ready for loading into MIPAV.
 
 ### CellNamer
 This folder allows you to run the built in naming function from the above script on a single annotations csv file outside the full code if necessary. Placing an annotation.csv file into this CellNamer folder and then running cellNamer.py outputs an updated_annotations.csv file in the same folder with terminally differentiated cell names updated. 
