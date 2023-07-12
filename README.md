@@ -4,7 +4,7 @@ This repository contains the various codes used by the Shroff lab C. elegans unt
 
   1. Image Processing
   2. Untwisting
-  4. Model building
+  3. Model building
 
 
 ## Image Processing
@@ -18,7 +18,7 @@ Divided into the following subsections:
 Each folder contains the scripts for performing the different analysis techniques. Instructions are located in the README.md file within the folder.
 
 
-## Segmentation
+## Untwisting
 Various python codes used to aid in the lineaging and tracking pipelines
 
 
